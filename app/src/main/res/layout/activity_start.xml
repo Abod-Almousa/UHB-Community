@@ -24,6 +24,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:id="@+id/btn_login"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="10dp"
             android:layout_marginStart="15dp"
@@ -38,6 +39,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:id="@+id/btn_register"
             android:layout_marginTop="10dp"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
@@ -47,6 +49,32 @@
             android:textColor="@color/btn_start_activity"
             android:textSize="20sp"
             android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="5dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_made"
+            android:layout_margin="10dp"
+            android:text="Made with ❤ By UHB Community team"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_rights"
+            android:layout_below="@+id/tv_made"
+            android:layout_margin="10dp"
+            android:text="All rights reserved 2020/2021"/>
     </LinearLayout>
 
 </RelativeLayout>
