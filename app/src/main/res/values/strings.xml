@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">UHB Community</string>
+
+    <!-- Start Activity -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+
+
 </resources>
