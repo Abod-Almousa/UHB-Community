@@ -6,4 +6,14 @@
     <string name="login">تسجيل الدخول</string>
     <string name="register">إنشاء حساب</string>
 
+    <!-- Register & Login Activity -->
+    <string name="sign_up">إنضم الآن</string>
+    <string name="username">إسم المستخدم</string>
+    <string name="full_name">الإسم الكامل</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">كلمة السر</string>
+    <string name="remember_me">تذكرني</string>
+    <string name="have_an_account">لديك حساب بالفعل؟ تسجيل الدخول</string>
+
+
 </resources>
