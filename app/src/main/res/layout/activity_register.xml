@@ -58,7 +58,7 @@
             android:padding="15dp" />
 
         <EditText
-            android:id="@+id/et_name"
+            android:id="@+id/et_fullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -123,8 +123,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/cb_accept_rules"
                 android:text="@string/accept_rules_1"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginStart="20dp"
                 android:buttonTint="@color/teal_200"/>
 
@@ -134,11 +134,21 @@
                 android:id="@+id/terms_of_use"
                 android:text="@string/accept_rules_2"
                 android:textColor="@color/black"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginStart="5dp"/>
 
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cb_error"
+            android:text="@string/must_accept_rules"
+            android:textColor="@color/red"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/btn_register"
