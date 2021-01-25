@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResetPassActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbar"
+        android:background="?android:attr/windowBackground">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            app:title="@string/reset_pass_title"
+            app:titleTextColor="@color/black"
+            android:background="?android:attr/windowBackground"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="280dp"
+        android:layout_height="230dp"
+        android:id="@+id/anim_reset_pass"
+        android:layout_below="@+id/appbar"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        app:lottie_rawRes="@raw/reset_pass"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_below="@+id/anim_reset_pass"
+            android:layout_margin="20dp"
+            android:layout_marginTop="30dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/white">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_reset_pass"
+                    android:layout_alignParentTop="true"
+                    android:padding="15dp"
+                    android:background="#496EB3"
+                    android:text="@string/reset_pass_title"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/et_email"
+                    android:inputType="textEmailAddress"
+                    android:layout_below="@+id/tv_reset_pass"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="20dp"
+                    android:padding="15dp"
+                    android:background="@drawable/edit_text_form_background"
+                    android:importantForAutofill="no"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/reset_pass_email"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cancel"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="15dp"
+                    android:paddingBottom="15dp"
+                    android:text="@string/reset_pass_cancel"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recover"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="20dp"
+                    android:paddingBottom="15dp"
+                    android:text="@string/reset_pass_recover"
+                    android:textColor="#496EB3"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

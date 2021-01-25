@@ -18,5 +18,13 @@
     <string name="donot_have_an_account">ليس لديك حساب؟ إنشاء حساب</string>
     <string name="forgot_pass">نسيت كلمة المرور؟</string>
 
+    <!-- Reset password Activity -->
+    <string name="reset_pass_title">إعادة تعيين كلمة المرور</string>
+    <string name="reset_pass_email">البريد الإلكتروني</string>
+    <string name="reset_pass_recover">إستعادة</string>
+    <string name="reset_pass_cancel">إلغاء</string>
+
+
+
 
 </resources>

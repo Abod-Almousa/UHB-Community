@@ -17,4 +17,12 @@
     <string name="donot_have_an_account">Do not have an account? Register</string>
     <string name="forgot_pass">Forgot password?</string>
 
+    <!-- Reset password Activity -->
+    <string name="reset_pass_title">Reset Password</string>
+    <string name="reset_pass_email">Your Email</string>
+    <string name="reset_pass_recover">Recover</string>
+    <string name="reset_pass_cancel">Cancel</string>
+
+
+
 </resources>
