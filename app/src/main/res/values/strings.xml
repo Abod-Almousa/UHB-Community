@@ -6,7 +6,6 @@
     <string name="register">Register</string>
 
     <!-- Register & Login Activity -->
-    <string name="sign_up">Sign Up</string>
     <string name="username">Username</string>
     <string name="full_name">Full name</string>
     <string name="email">Email</string>
@@ -15,5 +14,7 @@
     <string name="accept_rules_1">I accept the</string>
     <string name="accept_rules_2"><u>Rules and terms of use</u></string>
     <string name="have_an_account">Already have an account? Log in</string>
+    <string name="donot_have_an_account">Do not have an account? Register</string>
+    <string name="forgot_pass">Forgot password?</string>
 
 </resources>
