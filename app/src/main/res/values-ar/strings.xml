@@ -13,6 +13,8 @@
     <string name="email">البريد الإلكتروني</string>
     <string name="password">كلمة السر</string>
     <string name="remember_me">تذكرني</string>
+    <string name="accept_rules_1">أوافق على</string>
+    <string name="accept_rules_2"><u>قواعد وشروط الاستخدام</u></string>
     <string name="have_an_account">لديك حساب بالفعل؟ تسجيل الدخول</string>
 
 

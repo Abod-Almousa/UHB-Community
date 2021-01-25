@@ -17,9 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/uhb"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:text="UHB"
-        android:textSize="60sp"
+        android:textSize="55sp"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"/>
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="COMMUNITY"
-        android:textSize="40sp"
+        android:textSize="35sp"
         android:layout_below="@+id/uhb"
         android:layout_centerInParent="true"/>
 
@@ -113,15 +113,32 @@
                 android:padding="15dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <CheckBox
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/cb_remember_me"
-            android:text="@string/remember_me"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="20dp"
-            android:buttonTint="@color/teal_200"/>
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cb_accept_rules"
+                android:text="@string/accept_rules_1"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="20dp"
+                android:buttonTint="@color/teal_200"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/terms_of_use"
+                android:text="@string/accept_rules_2"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_register"
