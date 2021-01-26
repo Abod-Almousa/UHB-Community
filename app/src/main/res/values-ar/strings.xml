@@ -30,7 +30,11 @@
     <string name="password_length">يجب ألا يقل طول كلمة المرور عن 8 أحرف</string>
     <string name="must_accept_rules">يجب عليك قبول القواعد وشروط الاستخدام</string>
     <string name="used_email">عنوان البريد الإلكتروني قيد الاستخدام بالفعل من قبل حساب آخر</string>
+    <string name="no_account_email">لا يوجد حساب تم إنشاؤه بواسطة هذا البريد الإلكتروني</string>
     <string name="email_sent">تم إرسال رسالة إلى بريدك الإلكتروني للتحقق من حسابك</string>
+    <string name="please_verify">يرجى التحقق من بريدك الإلكتروني!</string>
+    <string name="incorrect_pass">كلمة المرور غير صحيحة</string>
+    <string name="banned_account">تم حظر حسابك من قبل أحد المسؤولين</string>
     <string name="dialog_ok">حسنا</string>
     <string name="please_wait">إنتظر قليلا</string>
 

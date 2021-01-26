@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class StartActivity extends AppCompatActivity {
 
     private ImageView iv_logo;
@@ -43,4 +45,22 @@ public class StartActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // This shared preferences coming from Login Activity
+        String remember_me = getSharedPreferences("REMEMBER",MODE_PRIVATE)
+                .getString("rememberMe","none");
+
+        // To keep the user logged in the application
+        if(remember_me.equals("rememberMe")) {
+            if(FirebaseAuth.getInstance().getCurrentUser() != null && FirebaseAuth.getInstance().getCurrentUser().isEmailVerified())
+            {
+                Intent intent = new Intent(StartActivity.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }
+    }
 }

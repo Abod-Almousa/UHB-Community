@@ -29,7 +29,11 @@
     <string name="password_length">Password length must be at least 8 characters</string>
     <string name="must_accept_rules">You must accept the rules and terms of use</string>
     <string name="used_email">The email address is already in use by another account</string>
+    <string name="no_account_email">There is no account created by this email address</string>
     <string name="email_sent">An email has been sent to your email to verify your account</string>
+    <string name="please_verify">Please verify your Email !</string>
+    <string name="incorrect_pass">The password is not correct</string>
+    <string name="banned_account">Your account has been banned by an administrator</string>
     <string name="dialog_ok">Ok</string>
     <string name="please_wait">Please wait</string>
 
