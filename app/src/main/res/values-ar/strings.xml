@@ -23,6 +23,10 @@
     <string name="reset_pass_email">البريد الإلكتروني</string>
     <string name="reset_pass_recover">إستعادة</string>
     <string name="reset_pass_cancel">إلغاء</string>
+    <string name="sending_email">يتم إرسال الرسالة ...</string>
+    <string name="recovering_email_sent">تم إرسال رسالة إلى عنوان بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك</string>
+    <string name="failed_to_send">فشل في إرسال الرسالة إلى عنوان بريدك الإلكتروني</string>
+
 
     <!-- Edit text errors  -->
     <string name="required_filed">حقل مطلوب!</string>
