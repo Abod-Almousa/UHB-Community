@@ -14,7 +14,6 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -112,9 +111,6 @@ public class ResetPassActivity extends AppCompatActivity {
                     alertDialog.show();
                 }
                 else {
-                    dialog.dismiss();
-                    Toast.makeText(ResetPassActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
-                    finish();
 
                     // Display a dialog to tell the user that failed to send the email
                     AlertDialog alertDialog = new AlertDialog.Builder(ResetPassActivity.this).create();
