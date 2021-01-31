@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".RegisterActivity">
 
     <ImageView
@@ -17,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/uhb"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:text="UHB"
         android:textSize="55sp"
         android:textStyle="bold"
@@ -27,6 +28,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/community"
         android:text="COMMUNITY"
         android:textSize="35sp"
         android:layout_below="@+id/uhb"
@@ -35,18 +37,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_below="@+id/community"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/form_background2">
-
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/form_background2"
+        android:orientation="vertical">
 
 
         <EditText
             android:id="@+id/et_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/edit_text_form_background"
             android:drawableStart="@drawable/ic_user"
@@ -61,8 +65,8 @@
             android:id="@+id/et_fullName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/edit_text_form_background"
             android:drawableStart="@drawable/ic_user"
@@ -77,8 +81,8 @@
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/edit_text_form_background"
             android:drawableStart="@drawable/ic_email"
@@ -90,14 +94,14 @@
             android:padding="15dp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
             android:id="@+id/password_layout"
-            app:passwordToggleEnabled="true"
-            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="25dp"
-            app:hintEnabled="false">
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true">
 
             <EditText
                 android:id="@+id/et_password"
@@ -119,43 +123,43 @@
             android:orientation="horizontal">
 
             <CheckBox
+                android:id="@+id/cb_accept_rules"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/cb_accept_rules"
-                android:text="@string/accept_rules_1"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="5dp"
                 android:layout_marginStart="20dp"
-                android:buttonTint="@color/teal_200"/>
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="0dp"
+                android:buttonTint="@color/teal_200"
+                android:text="@string/accept_rules_1" />
 
             <TextView
+                android:id="@+id/terms_of_use"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/terms_of_use"
-                android:text="@string/accept_rules_2"
-                android:textColor="@color/black"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginStart="5dp"/>
+                android:layout_marginBottom="0dp"
+                android:text="@string/accept_rules_2"
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/cb_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cb_error"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="0dp"
             android:text="@string/must_accept_rules"
             android:textColor="@color/red"
-            android:layout_marginStart="25dp"
-            android:layout_marginBottom="10dp"
-            android:visibility="gone"/>
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/btn_login_background"
             android:padding="15dp"
@@ -167,12 +171,12 @@
             android:id="@+id/tv_login_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="25dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
+            android:padding="5dp"
             android:text="@string/have_an_account" />
 
     </LinearLayout>

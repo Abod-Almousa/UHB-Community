@@ -23,7 +23,7 @@
     <string name="reset_pass_recover">Recover</string>
     <string name="reset_pass_cancel">Cancel</string>
     <string name="sending_email">Sending email ...</string>
-    <string name="recovering_email_sent">An email message has been sent to your email address to reset your password</string>
+    <string name="recovering_email_sent">An email message has been sent to your Email to reset your password</string>
     <string name="failed_to_send">Failed to send the email message to your email address</string>
 
     <!-- Edit text errors  -->

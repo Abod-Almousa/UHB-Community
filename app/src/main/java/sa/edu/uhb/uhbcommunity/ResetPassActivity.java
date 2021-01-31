@@ -42,6 +42,8 @@ public class ResetPassActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(ResetPassActivity.this,LoginActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -57,6 +59,9 @@ public class ResetPassActivity extends AppCompatActivity {
         tv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent intent = new Intent(ResetPassActivity.this,LoginActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -70,10 +75,10 @@ public class ResetPassActivity extends AppCompatActivity {
 
                 // To validate the entered email address
                 if(TextUtils.isEmpty(email)) {
-                    et_email.setError("Empty field !");
+                    et_email.setError(getString(R.string.required_filed));
                 }
                 else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    et_email.setError("Invalid Email !");
+                    et_email.setError(getString(R.string.invalid_email));
                 }
                 else {
                     recoverPassword(email);
@@ -133,6 +138,14 @@ public class ResetPassActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(ResetPassActivity.this,LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
 

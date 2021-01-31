@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="274dp"
-
+        android:layout_alignParentTop="true"
         android:id="@+id/iv_background"
         android:src="@drawable/form_background" />
 
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/uhb"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:text="UHB"
         android:textSize="55sp"
         android:textStyle="bold"
@@ -38,14 +38,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_below="@+id/community"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/form_background2">
 
         <EditText
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/edit_text_form_background"
