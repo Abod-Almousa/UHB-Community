@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    app:cnb_unselectedColor="#43d8c9"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/item_home"
+        app:cnb_iconColor="@color/white"
+        app:cnb_textColor="@color/white"
+        app:cnb_backgroundColor="#43D8C9"/>
+
+    <item android:id="@+id/nav_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/item_search"
+        app:cnb_iconColor="@color/white"
+        app:cnb_textColor="@color/white"
+        app:cnb_backgroundColor="#43d8c9"/>
+
+    <item android:id="@+id/nav_add"
+        android:icon="@drawable/ic_add_post"
+        android:title="@string/item_add"
+        app:cnb_iconColor="@color/white"
+        app:cnb_textColor="@color/white"
+        app:cnb_backgroundColor="#43d8c9"/>
+
+    <item android:id="@+id/nav_notification"
+        android:icon="@drawable/ic_notification"
+        android:title="@string/item_notifications"
+        app:cnb_iconColor="@color/white"
+        app:cnb_textColor="@color/white"
+        app:cnb_backgroundColor="#43d8c9"/>
+
+    <item android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/item_profile"
+        app:cnb_iconColor="@color/white"
+        app:cnb_textColor="@color/white"
+        app:cnb_backgroundColor="#43d8c9"/>
+
+</menu>

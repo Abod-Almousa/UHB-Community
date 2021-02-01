@@ -40,6 +40,12 @@
     <string name="dialog_ok">Ok</string>
     <string name="please_wait">Please wait</string>
 
+    <!-- Bottom menu -->
+    <string name="item_search">Search</string> <!-- Bottom menu -->
+    <string name="item_add">Add</string>
+    <string name="item_notifications">Notifications</string>
+    <string name="item_profile">Profile</string>
+    <string name="item_home">Home</string>
 
 
 </resources>

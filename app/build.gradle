@@ -38,6 +38,7 @@ dependencies {
     // Firebase dependencies
     implementation 'com.google.firebase:firebase-auth:20.0.2'
     implementation 'com.google.firebase:firebase-database:19.6.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
 
     testImplementation 'junit:junit:4.+'
@@ -47,4 +48,5 @@ dependencies {
 
     // Extra dependencies
     implementation "com.airbnb.android:lottie:3.6.0"
+    implementation 'com.ismaeldivita.chipnavigation:chip-navigation-bar:1.3.3'
 }
