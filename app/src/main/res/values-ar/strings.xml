@@ -49,5 +49,22 @@
     <string name="item_profile">حسابي</string>
     <string name="item_home">الرئيسية</string>
 
+    <!-- Add post Activity -->
+    <string name="post">نشر</string>
+    <string name="cancel">إلغاء</string>
+    <string name="et_description_hint">أكتب هنا</string>
+    <string name="btn_add_picture">إضافة صورة</string>
+    <string name="btn_remove_picture">حذف الصورة</string>
+    <string name="category_hints">إرشادات لتحديد الفئة</string>
+    <string name="hint1">1- الأسئلة: إذا أردت طرح سؤال أو لديك مشكلة.</string>
+    <string name="hint2">2- نصيحة: إذا كانت لديك نصيحة تعتقد أنها ستكون مفيدة للآخرين.</string>
+    <string name="hint3">3- الأخبار: إذا كان لديك أخبار متعلقة بالجامعة.</string>
+    <string-array name="categories">
+        <item>إختر فئة</item>
+        <item>الأسئلة</item>
+        <item>النصائح</item>
+        <item>الأخبار</item>
+    </string-array>
+
 
 </resources>
