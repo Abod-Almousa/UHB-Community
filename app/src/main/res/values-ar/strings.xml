@@ -55,6 +55,11 @@
     <string name="et_description_hint">أكتب هنا</string>
     <string name="btn_add_picture">إضافة صورة</string>
     <string name="btn_remove_picture">حذف الصورة</string>
+    <string name="uploading">جاري التحميل، الرجاء الانتظار</string>
+    <string name="try_again">حاول مجددا</string>
+    <string name="crop_image_title">إختر صورة</string>
+    <string name="crop_image_btn">تم</string>
+    <string name="category_error">يجب عليك تحديد فئة</string>
     <string name="category_hints">إرشادات لتحديد الفئة</string>
     <string name="hint1">1- الأسئلة: إذا أردت طرح سؤال أو لديك مشكلة.</string>
     <string name="hint2">2- نصيحة: إذا كانت لديك نصيحة تعتقد أنها ستكون مفيدة للآخرين.</string>

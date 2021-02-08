@@ -53,6 +53,11 @@
     <string name="et_description_hint">Write here</string>
     <string name="btn_add_picture">Add Picture</string>
     <string name="btn_remove_picture">Remove Picture</string>
+    <string name="uploading">Uploading, please wait</string>
+    <string name="try_again">Try again</string>
+    <string name="crop_image_title">Choose Picture</string>
+    <string name="crop_image_btn">Ok</string>
+    <string name="category_error">You must select category</string>
     <string name="category_hints">Hints to select the category</string>
     <string name="hint1">1- Questions: If you want to ask a question or you have a problem.</string>
     <string name="hint2">2- Advices: If you have an advice that you think will be useful for others.</string>

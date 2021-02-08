@@ -27,7 +27,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:id="@+id/close"
+                    android:id="@+id/tv_cancel"
                     android:text="@string/cancel"
                     android:textSize="18sp"/>
 
@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/post"
-                    android:id="@+id/post"
+                    android:id="@+id/tv_post"
                     android:textSize="18sp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginEnd="15dp"
@@ -72,7 +72,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/iv_post_image"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp" />
+                android:layout_marginBottom="20dp"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -110,6 +112,16 @@
                 app:popupTextAlignment="center"
                 android:layout_margin="10dp"
                 android:padding="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_category_error"
+                android:text="@string/category_error"
+                android:textColor="@color/add_post_color"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone"/>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
