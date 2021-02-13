@@ -9,7 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#c2bdbf</color>
     <color name="gray2">#636363</color>
+    <color name="gray3">#FAFAFA</color>
     <color name="red">#FF3728</color>
+    <color name="blue">#147CCF</color>
 
     <color name="btn_start_activity">#43D8C9</color>
     <color name="add_post_color">#FF414D</color>
