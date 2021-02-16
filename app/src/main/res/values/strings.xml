@@ -69,5 +69,9 @@
         <item>News</item>
     </string-array>
 
+    <!-- For the post -->
+    <string name="likes">Likes</string>
+    <string name="comments">Comments</string>
+
 
 </resources>

@@ -54,5 +54,6 @@ dependencies {
     implementation 'com.github.arcadefire:nice-spinner:1.4.4'
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }

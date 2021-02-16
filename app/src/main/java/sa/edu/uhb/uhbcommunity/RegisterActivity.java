@@ -202,7 +202,7 @@ public class RegisterActivity extends AppCompatActivity {
                 map.put("fullname",fullName);
                 map.put("id",FirebaseAuth.getInstance().getCurrentUser().getUid());
                 map.put("bio","");
-                map.put("imageurl","default");
+                map.put("image","none");
                 map.put("role","user");
 
                 // Store the new user

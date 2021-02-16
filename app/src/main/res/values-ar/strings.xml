@@ -71,5 +71,10 @@
         <item>الأخبار</item>
     </string-array>
 
+    <!-- For the post -->
+    <string name="likes">إعجاب</string>
+    <string name="comments">تعليق</string>
+
+
 
 </resources>
