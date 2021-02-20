@@ -61,6 +61,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             holder.iv_post_image.setVisibility(View.GONE);
         }
         else {
+            holder.iv_post_image.setVisibility(View.VISIBLE);
             Picasso.get().load(post.getImage()).into(holder.iv_post_image);
         }
 
@@ -110,7 +111,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             holder.iv_more.setVisibility(View.VISIBLE);
         }
         else {
-            holder.iv_more.setVisibility(View.GONE);
+            holder.iv_more.setVisibility(View.INVISIBLE);
         }
 
         // When the user click on like button to like/unlike the post

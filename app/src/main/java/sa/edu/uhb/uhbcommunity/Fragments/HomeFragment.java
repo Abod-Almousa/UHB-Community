@@ -7,10 +7,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,8 +37,9 @@ public class HomeFragment extends Fragment {
     private PostAdapter postAdapter;
     private List<Post> postList;
     private NiceSpinner list_category;
-    private String category;
+    private String category = "Questions";
 
+    private LottieAnimationView anim_page_loading;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +53,9 @@ public class HomeFragment extends Fragment {
         // Using the post adapter
         postAdapter = new PostAdapter(getContext(),postList);
 
+        // For the lottie animation
+        anim_page_loading = view.findViewById(R.id.anim_page_loading);
+
         // For the Post Recycler View
         rv_posts = view.findViewById(R.id.rv_posts);
         rv_posts.setHasFixedSize(true);
@@ -56,6 +64,11 @@ public class HomeFragment extends Fragment {
         linearLayoutManager.setReverseLayout(true); // To display the latest posts at the top
         rv_posts.setLayoutManager(linearLayoutManager);
         rv_posts.setAdapter(postAdapter);
+
+        // To display the Questions category first
+        anim_page_loading.setVisibility(View.VISIBLE);
+        anim_page_loading.playAnimation();
+        getPosts(category,linearLayoutManager);
 
         // To get the selected category
         list_category = view.findViewById(R.id.list_category);
@@ -66,18 +79,27 @@ public class HomeFragment extends Fragment {
                 switch (position) {
 
                     case 1:
+                        rv_posts.setVisibility(View.GONE);
+                        anim_page_loading.setVisibility(View.VISIBLE);
+                        anim_page_loading.playAnimation();
                         category = "Questions";
-                        getPosts(category);
+                        getPosts(category,linearLayoutManager);
                         break;
 
                     case 2:
+                        rv_posts.setVisibility(View.GONE);
+                        anim_page_loading.setVisibility(View.VISIBLE);
+                        anim_page_loading.playAnimation();
                         category = "Advices";
-                        getPosts(category);
+                        getPosts(category, linearLayoutManager);
                         break;
 
                     case 3:
+                        rv_posts.setVisibility(View.GONE);
+                        anim_page_loading.setVisibility(View.VISIBLE);
+                        anim_page_loading.playAnimation();
                         category = "News";
-                        getPosts(category);
+                        getPosts(category, linearLayoutManager);
                         break;
                 }
             }
@@ -86,7 +108,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    private void getPosts(String category) {
+    private void getPosts(String category, LinearLayoutManager linearLayoutManager) {
 
         // This query to only get and display the posts for the selected category
         Query query = FirebaseDatabase.getInstance().getReference().child("Posts")
@@ -103,12 +125,19 @@ public class HomeFragment extends Fragment {
                     Post post = dataSnapshot.getValue(Post.class);
                     postList.add(post);
                 }
+
+                // To stop the loading anim
+                anim_page_loading.cancelAnimation();
+                anim_page_loading.setVisibility(View.GONE);
+
+                rv_posts.setVisibility(View.VISIBLE);
                 postAdapter.notifyDataSetChanged();
+                linearLayoutManager.scrollToPosition(postAdapter.getItemCount()-1);
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }

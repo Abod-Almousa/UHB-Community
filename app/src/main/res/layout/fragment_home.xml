@@ -43,5 +43,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/appbar"
         android:id="@+id/rv_posts"/>
-
+    
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="250dp"
+        android:layout_height="180dp"
+        android:id="@+id/anim_page_loading"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/page_loading"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="true"/>
 </RelativeLayout>

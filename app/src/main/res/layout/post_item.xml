@@ -7,8 +7,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="5dp"
+        android:layout_margin="10dp"
         app:cardElevation="3dp">
 
         <RelativeLayout
@@ -78,7 +78,8 @@
                 android:id="@+id/iv_post_image"
                 android:layout_below="@+id/user_details"
                 android:scaleType="fitXY"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="true"
+                android:visibility="gone"/>
 
             <TextView
                 android:layout_width="match_parent"
