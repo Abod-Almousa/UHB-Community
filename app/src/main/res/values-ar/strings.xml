@@ -74,7 +74,8 @@
     <!-- For the post -->
     <string name="likes">إعجاب</string>
     <string name="comments">تعليق</string>
-
-
+    <string name="comment_activity_title">التعليقات</string>
+    <string name="write_comment">أكتب تعليق</string>
+    <string name="no_comment">أكتب تعليق!</string>
 
 </resources>

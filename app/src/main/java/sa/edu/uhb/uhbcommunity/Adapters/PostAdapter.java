@@ -1,6 +1,7 @@
 package sa.edu.uhb.uhbcommunity.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import sa.edu.uhb.uhbcommunity.CommentActivity;
 import sa.edu.uhb.uhbcommunity.Model.Post;
 import sa.edu.uhb.uhbcommunity.Model.User;
 import sa.edu.uhb.uhbcommunity.R;
@@ -127,6 +129,32 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             @Override
             public void onClick(View view) {
                 savePost(post.getPostid(),holder.iv_save);
+            }
+        });
+
+        // When the user click on comment button, will be redirected to the comment page
+        holder.iv_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, CommentActivity.class);
+
+                // This data will be sent to the comment activity to view/add comments for this post
+                intent.putExtra("postId",post.getPostid());
+                intent.putExtra("publisherId",post.getPublisher());
+                context.startActivity(intent);
+            }
+        });
+
+        // When the user click on the number of comments, will be redirected to the comment page
+        holder.tv_no_of_comments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, CommentActivity.class);
+
+                // This data will be sent to the comment activity to view/add comments for this post
+                intent.putExtra("postId",post.getPostid());
+                intent.putExtra("publisherId",post.getPublisher());
+                context.startActivity(intent);
             }
         });
 

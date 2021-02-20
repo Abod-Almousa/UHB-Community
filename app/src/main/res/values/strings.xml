@@ -70,8 +70,11 @@
     </string-array>
 
     <!-- For the post -->
-    <string name="likes">Likes</string>
-    <string name="comments">Comments</string>
+    <string name="likes">Like</string>
+    <string name="comments">Comment</string>
+    <string name="comment_activity_title">Comments</string>
+    <string name="write_comment">Write comment</string>
+    <string name="no_comment">Write comment!</string>
 
 
 </resources>
