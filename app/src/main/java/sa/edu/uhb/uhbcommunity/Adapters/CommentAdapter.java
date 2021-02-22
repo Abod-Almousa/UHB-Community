@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -56,7 +58,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
 
-        Comment comment = comments.get(position);
+        final Comment comment = comments.get(position);
 
         /* To set the details of the comment */
 
@@ -106,22 +108,30 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
                 if(comment.getPublisher().equals(firebaseUser.getUid())) {
                     AlertDialog dialog = new AlertDialog.Builder(context).create();
-                    dialog.setTitle(String.valueOf(R.string.delete_comment));
+                    dialog.setTitle(view.getResources().getString(R.string.delete_comment));
 
                     // Button "Yes" to delete the comment
-                    dialog.setButton(AlertDialog.BUTTON_POSITIVE, String.valueOf(R.string.delete_comment_yes), new DialogInterface.OnClickListener() {
+                    dialog.setButton(AlertDialog.BUTTON_POSITIVE, view.getResources().getString(R.string.delete_comment_yes), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            deleteComment(comment.getCommentid());
-                            dialogInterface.dismiss();
+                            deleteComment(comment.getCommentid(),dialogInterface);
                         }
                     });
 
                     // Button "Cancel" to cancel the alert
-                    dialog.setButton(AlertDialog.BUTTON_NEUTRAL, String.valueOf(R.string.delete_comment_cancel), new DialogInterface.OnClickListener() {
+                    dialog.setButton(AlertDialog.BUTTON_NEUTRAL, view.getResources().getString(R.string.delete_comment_cancel), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
+                        }
+                    });
+
+                    // To set the color of the dialog buttons
+                    dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                        @Override
+                        public void onShow(DialogInterface dialogInterface) {
+                            dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(view.getResources().getColor(R.color.gray));
+                            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(view.getResources().getColor(R.color.red));
                         }
                     });
                     dialog.show();
@@ -131,15 +141,20 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         });
     }
 
-    // To delete the comment
-    private void deleteComment(String commentid) {
-
-        firebaseDatabase.child("Comments").child(postId).child(commentid).removeValue();
-    }
-
     @Override
     public int getItemCount() {
         return comments.size();
+    }
+
+    // To delete the comment
+    private void deleteComment(String commentid, DialogInterface dialogInterface) {
+
+        firebaseDatabase.child("Comments").child(postId).child(commentid).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                dialogInterface.dismiss();
+            }
+        });
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

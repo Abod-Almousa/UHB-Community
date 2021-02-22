@@ -68,4 +68,14 @@
 
     </RelativeLayout>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:id="@+id/anim_no_comments"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/no_comments"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="false"/>
+
 </RelativeLayout>

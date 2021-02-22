@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,10 +46,11 @@ public class CommentActivity extends AppCompatActivity {
     private ImageView iv_send_comment;
     private String date;
     private String time;
+    private LottieAnimationView anim_no_comments;
+
     private RecyclerView rv_comments;
     private List<Comment> commentList;
     private CommentAdapter commentAdapter;
-
 
     // This data will be received from the Post Adapter
     private String postId;
@@ -66,6 +68,7 @@ public class CommentActivity extends AppCompatActivity {
         iv_profile = findViewById(R.id.iv_profile);
         et_add_comment = findViewById(R.id.et_add_comment);
         iv_send_comment = findViewById(R.id.iv_send_comment);
+        anim_no_comments = findViewById(R.id.anim_no_comments);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
@@ -81,6 +84,11 @@ public class CommentActivity extends AppCompatActivity {
             }
         });
 
+        // This data are sent from Post Adapter
+        Intent intent = getIntent();
+        postId = intent.getStringExtra("postId");
+        publisherId = intent.getStringExtra("publisherId");
+
         // To store the comments in this list
         commentList = new ArrayList<>();
 
@@ -92,11 +100,6 @@ public class CommentActivity extends AppCompatActivity {
         rv_comments.setHasFixedSize(true);
         rv_comments.setLayoutManager(new LinearLayoutManager(this));
         rv_comments.setAdapter(commentAdapter);
-
-        // This data are sent from Post Adapter
-        Intent intent = getIntent();
-        postId = intent.getStringExtra("postId");
-        publisherId = intent.getStringExtra("authorId");
 
         // To get the user profile image (sender)
         getUserInfo();
@@ -120,7 +123,6 @@ public class CommentActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     // To get the user profile image (sender)
@@ -163,6 +165,16 @@ public class CommentActivity extends AppCompatActivity {
                         }
 
                         commentAdapter.notifyDataSetChanged();
+
+                        // To view the animation if there are no comments
+                        if(commentAdapter.getItemCount() == 0) {
+                            anim_no_comments.setVisibility(View.VISIBLE);
+                            anim_no_comments.playAnimation();
+                        }
+                        else {
+                            anim_no_comments.cancelAnimation();
+                            anim_no_comments.setVisibility(View.GONE);
+                        }
                     }
 
                     @Override
