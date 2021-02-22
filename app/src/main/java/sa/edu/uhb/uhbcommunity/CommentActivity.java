@@ -23,7 +23,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import sa.edu.uhb.uhbcommunity.Model.User;
@@ -33,6 +37,8 @@ public class CommentActivity extends AppCompatActivity {
     private CircleImageView iv_profile;
     private EditText et_add_comment;
     private ImageView iv_send_comment;
+    private String date;
+    private String time;
 
     // This data will be received from the Post Adapter
     private String postId;
@@ -120,6 +126,9 @@ public class CommentActivity extends AppCompatActivity {
     // To send the comment
     private void sendComment() {
 
+        date = getCurrentDate();
+        time = getCurrentTime();
+
         HashMap<String,Object> map = new HashMap<>();
 
         DatabaseReference reference = firebaseDatabase.child("Comments").child(postId);
@@ -130,6 +139,8 @@ public class CommentActivity extends AppCompatActivity {
         map.put("commentid",commentId);
         map.put("comment",et_add_comment.getText().toString());
         map.put("publisher",firebaseUser.getUid());
+        map.put("date",date);
+        map.put("time",time);
 
         reference.child(commentId).setValue(map)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -143,5 +154,21 @@ public class CommentActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    // To get the current date of the comment "Only in EN"
+    private String getCurrentDate() {
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH);
+        String date = dateFormat.format(Calendar.getInstance().getTime());
+
+        return date;
+    }
+
+    // To get the current time of the comment "Only in EN"
+    private String getCurrentTime() {
+        DateFormat dateFormat = new SimpleDateFormat("h:mm a", Locale.ENGLISH);
+        String time = dateFormat.format(Calendar.getInstance().getTime());
+
+        return time;
     }
 }
