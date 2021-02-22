@@ -3,6 +3,8 @@ package sa.edu.uhb.uhbcommunity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,11 +27,15 @@ import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import sa.edu.uhb.uhbcommunity.Adapters.CommentAdapter;
+import sa.edu.uhb.uhbcommunity.Model.Comment;
 import sa.edu.uhb.uhbcommunity.Model.User;
 
 public class CommentActivity extends AppCompatActivity {
@@ -39,6 +45,10 @@ public class CommentActivity extends AppCompatActivity {
     private ImageView iv_send_comment;
     private String date;
     private String time;
+    private RecyclerView rv_comments;
+    private List<Comment> commentList;
+    private CommentAdapter commentAdapter;
+
 
     // This data will be received from the Post Adapter
     private String postId;
@@ -71,6 +81,18 @@ public class CommentActivity extends AppCompatActivity {
             }
         });
 
+        // To store the comments in this list
+        commentList = new ArrayList<>();
+
+        // Using the Comment adapter
+        commentAdapter = new CommentAdapter(this,commentList,postId);
+
+        // For the Comment Recycler View
+        rv_comments = findViewById(R.id.rv_comments);
+        rv_comments.setHasFixedSize(true);
+        rv_comments.setLayoutManager(new LinearLayoutManager(this));
+        rv_comments.setAdapter(commentAdapter);
+
         // This data are sent from Post Adapter
         Intent intent = getIntent();
         postId = intent.getStringExtra("postId");
@@ -78,6 +100,8 @@ public class CommentActivity extends AppCompatActivity {
 
         // To get the user profile image (sender)
         getUserInfo();
+        // To get all comments for this post
+        getComments();
 
         // When click on send button
         iv_send_comment.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +138,31 @@ public class CommentActivity extends AppCompatActivity {
                         else {
                             Picasso.get().load(user.getImage()).into(iv_profile);
                         }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+    }
+
+    // To get all comments
+    private void getComments() {
+
+        firebaseDatabase.child("Comments").child(postId)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        commentList.clear();
+
+                        for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            Comment comment = dataSnapshot.getValue(Comment.class);
+                            commentList.add(comment);
+                        }
+
+                        commentAdapter.notifyDataSetChanged();
                     }
 
                     @Override
