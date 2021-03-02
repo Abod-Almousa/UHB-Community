@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UHBCommunity">
-        <activity android:name=".CommentActivity"></activity>
+        <activity android:name=".EditPostActivity"></activity>
+        <activity android:name=".CommentActivity" />
         <activity android:name=".AddPostActivity" />
         <activity android:name=".ResetPassActivity" />
         <activity android:name=".RegisterActivity" />

@@ -1,13 +1,21 @@
 package sa.edu.uhb.uhbcommunity.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.view.menu.MenuPopupHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,12 +25,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import sa.edu.uhb.uhbcommunity.CommentActivity;
+import sa.edu.uhb.uhbcommunity.EditPostActivity;
 import sa.edu.uhb.uhbcommunity.Model.Post;
 import sa.edu.uhb.uhbcommunity.Model.User;
 import sa.edu.uhb.uhbcommunity.R;
@@ -155,6 +166,38 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 intent.putExtra("postId",post.getPostid());
                 intent.putExtra("publisherId",post.getPublisher());
                 context.startActivity(intent);
+            }
+        });
+
+        // When the user click on option button to edit/delete post
+        holder.iv_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu menu = new PopupMenu(context,holder.iv_more);
+                menu.getMenuInflater().inflate(R.menu.post_option_menu,menu.getMenu());
+
+                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+
+                        switch (menuItem.getItemId()) {
+
+                            case R.id.edit_post:
+                                // The user will be redirected to the edit post page
+                                Intent intent = new Intent(context, EditPostActivity.class);
+                                // To send the post information to the edit post page
+                                intent.putExtra("postId",post.getPostid());
+                                context.startActivity(intent);
+                                break;
+
+                            case R.id.delete_post:
+                                // Write code here
+                                break;
+                        }
+                        return true;
+                    }
+                });
+                menu.show();
             }
         });
 

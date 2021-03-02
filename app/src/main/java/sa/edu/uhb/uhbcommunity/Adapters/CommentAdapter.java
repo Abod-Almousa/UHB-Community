@@ -132,6 +132,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
                         public void onShow(DialogInterface dialogInterface) {
                             dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(view.getResources().getColor(R.color.gray));
                             dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(view.getResources().getColor(R.color.red));
+                            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setAllCaps(false);
+                            dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setAllCaps(false);
                         }
                     });
                     dialog.show();

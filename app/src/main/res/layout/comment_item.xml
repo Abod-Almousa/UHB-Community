@@ -8,7 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="5dp"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="3dp"
         app:cardElevation="3dp">
         
         <RelativeLayout
@@ -69,6 +72,8 @@
                 android:layout_below="@id/iv_profile"
                 android:layout_margin="10dp"
                 android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="5dp"
                 android:autoLink="web"
                 android:linksClickable="true"
                 android:textColorLink="@color/blue"/>

@@ -48,6 +48,7 @@
     <string name="item_home">Home</string>
 
     <!-- Add post Activity -->
+    <string name="post_title">New Post</string>
     <string name="post">Post</string>
     <string name="cancel">Cancel</string>
     <string name="et_description_hint">Write here</string>
@@ -69,16 +70,22 @@
         <item>News</item>
     </string-array>
 
+    <!-- Edit post Activity -->
+    <string name="apply_changes">Apply Changes</string>
+    <string name="edit_post_title">Edit Post</string>
+
     <!-- For the post -->
     <string name="likes">Like</string>
     <string name="comments">Comment</string>
+    <string name="edit_post">Edit post</string>
+    <string name="delete_post">Delete post</string>
 
     <!-- For the comment -->
     <string name="comment_activity_title">Comments</string>
     <string name="write_comment">Write comment</string>
     <string name="no_comment">Write comment!</string>
     <string name="delete_comment">Do you want to delete this comment?</string>
-    <string name="delete_comment_yes">Yes</string>
+    <string name="delete_comment_yes">Delete</string>
     <string name="delete_comment_cancel">Cancel</string>
 
 

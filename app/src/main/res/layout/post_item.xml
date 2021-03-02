@@ -88,6 +88,8 @@
                 android:layout_below="@+id/iv_post_image"
                 android:layout_margin="8dp"
                 android:textColor="@color/black"
+                android:textSize="15sp"
+                android:lineSpacingExtra="5dp"
                 android:autoLink="web"
                 android:linksClickable="true"
                 android:textColorLink="@color/blue"/>

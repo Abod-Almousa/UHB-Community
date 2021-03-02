@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AddPostActivity">
+    tools:context=".EditPostActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/post_title"
+                    android:text="@string/edit_post_title"
                     android:id="@+id/tv_apply"
                     android:textSize="18sp"
                     android:layout_alignParentEnd="true"
@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/list_category"
                     android:layout_toStartOf="@id/btn_select_image"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="5dp"
                     android:elevation="6dp"
                     app:entries="@array/categories"
                     app:arrowTint="@color/gray2"
@@ -106,7 +106,7 @@
                     android:layout_height="50dp"
                     android:id="@+id/btn_select_image"
                     android:src="@drawable/ic_select_img"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_marginStart="10dp"/>
 
                 <ImageView
@@ -114,20 +114,18 @@
                     android:layout_height="50dp"
                     android:id="@+id/btn_remove_image"
                     android:src="@drawable/ic_delete_img"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_marginStart="10dp"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/btn_post"
-                    android:text="@string/post"
+                    android:id="@+id/btn_apply"
+                    android:text="@string/apply_changes"
                     android:textColor="@color/add_post_color"
-                    android:textSize="17sp"
                     android:padding="8dp"
                     android:background="@drawable/btn_post_background"
-                    android:textAllCaps="false"
-                    android:layout_marginStart="10dp"/>
+                    android:textAllCaps="false"/>
             </LinearLayout>
 
             <TextView
@@ -196,4 +194,5 @@
 
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

@@ -50,6 +50,7 @@
     <string name="item_home">الرئيسية</string>
 
     <!-- Add post Activity -->
+    <string name="post_title">منشور جديد</string>
     <string name="post">نشر</string>
     <string name="cancel">إلغاء</string>
     <string name="et_description_hint">أكتب هنا</string>
@@ -71,16 +72,22 @@
         <item>الأخبار</item>
     </string-array>
 
+    <!-- Edit post Activity -->
+    <string name="apply_changes">تطبيق التغييرات</string>
+    <string name="edit_post_title">تعديل المنشور</string>
+
     <!-- For the post -->
     <string name="likes">إعجاب</string>
     <string name="comments">تعليق</string>
+    <string name="edit_post">تعديل المنشور</string>
+    <string name="delete_post">حذف المنشور</string>
 
     <!-- For the comment -->
     <string name="comment_activity_title">التعليقات</string>
     <string name="write_comment">أكتب تعليق</string>
     <string name="no_comment">أكتب تعليق!</string>
     <string name="delete_comment">هل تريد حذف هذا التعليق؟</string>
-    <string name="delete_comment_yes">نعم</string>
+    <string name="delete_comment_yes">حذف</string>
     <string name="delete_comment_cancel">إلغاء</string>
 
 </resources>
