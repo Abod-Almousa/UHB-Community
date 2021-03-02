@@ -90,4 +90,9 @@
     <string name="delete_comment_yes">حذف</string>
     <string name="delete_comment_cancel">إلغاء</string>
 
+    <!-- For the post -->
+    <string name="delete_post_dialog">هل تريد حذف هذا المنشور؟</string>
+    <string name="delete_post_yes">حذف</string>
+    <string name="delete_post_cancel">إلغاء</string>
+
 </resources>

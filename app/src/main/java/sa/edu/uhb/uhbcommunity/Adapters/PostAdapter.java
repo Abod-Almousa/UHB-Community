@@ -18,6 +18,8 @@ import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPopupHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -191,8 +193,38 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                                 break;
 
                             case R.id.delete_post:
-                                // Write code here
+                                AlertDialog dialog = new AlertDialog.Builder(context).create();
+                                dialog.setTitle(view.getResources().getString(R.string.delete_post_dialog));
+
+                                // Button "Yes" to delete the comment
+                                dialog.setButton(AlertDialog.BUTTON_POSITIVE, view.getResources().getString(R.string.delete_post_yes), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        deletePost(post.getImage(),post.getPostid(),dialogInterface);
+                                    }
+                                });
+
+                                // Button "Cancel" to cancel the alert
+                                dialog.setButton(AlertDialog.BUTTON_NEUTRAL, view.getResources().getString(R.string.delete_post_cancel), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.dismiss();
+                                    }
+                                });
+
+                                // To set the color of the dialog buttons
+                                dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                                    @Override
+                                    public void onShow(DialogInterface dialogInterface) {
+                                        dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(view.getResources().getColor(R.color.gray));
+                                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(view.getResources().getColor(R.color.red));
+                                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setAllCaps(false);
+                                        dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setAllCaps(false);
+                                    }
+                                });
+                                dialog.show();
                                 break;
+
                         }
                         return true;
                     }
@@ -284,6 +316,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
                     }
                 });
+    }
+    // To delete the post
+    private void deletePost(String image, String postid, DialogInterface dialogInterface) {
+
+        if (!image.equals("none")) {
+            StorageReference reference = FirebaseStorage.getInstance().getReferenceFromUrl(image);
+            reference.delete();
+        }
+        firebaseDatabase.child("Posts").child(postid).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                dialogInterface.dismiss();
+            }
+        });
     }
 
     // To check if the post is saved by the user or not

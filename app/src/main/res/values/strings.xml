@@ -88,5 +88,9 @@
     <string name="delete_comment_yes">Delete</string>
     <string name="delete_comment_cancel">Cancel</string>
 
+    <!-- For the post -->
+    <string name="delete_post_dialog">Do yo want to delete this post?</string>
+    <string name="delete_post_yes">Delete</string>
+    <string name="delete_post_cancel">Cancel</string>
 
 </resources>
