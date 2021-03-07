@@ -95,4 +95,10 @@
     <string name="delete_post_yes">حذف</string>
     <string name="delete_post_cancel">إلغاء</string>
 
+    <!-- For the profile -->
+    <string name="profile_btn_edit">تعديل الصفحة الشخصية</string>
+    <string name="profile_btn_send">إرسال رسالة</string>
+    <string name="post_label">منشور</string>
+    <string name="bio_label">السيرة الذاتية</string>
+
 </resources>

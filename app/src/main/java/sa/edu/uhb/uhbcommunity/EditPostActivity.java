@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -79,28 +80,28 @@ public class EditPostActivity extends AppCompatActivity {
         postId = intent.getStringExtra("postId");
 
         // To display the post information
-        FirebaseDatabase.getInstance().getReference().child("Posts").child(postId)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Post post = snapshot.getValue(Post.class);
+            FirebaseDatabase.getInstance().getReference().child("Posts").child(postId)
+                    .addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Post post = snapshot.getValue(Post.class);
 
-                        if(!post.getImage().equals("none")) {
-                            Picasso.get().load(post.getImage()).into(iv_post_image);
-                            keepImage = post.getImage();
+                            if(!post.getImage().equals("none")) {
+                                Picasso.get().load(post.getImage()).into(iv_post_image);
+                                keepImage = post.getImage();
 
-                            btn_select_image.setVisibility(View.GONE);
-                            btn_remove_image.setVisibility(View.VISIBLE);
+                                btn_select_image.setVisibility(View.GONE);
+                                btn_remove_image.setVisibility(View.VISIBLE);
+                            }
+
+                            et_post_description.setText(post.getDescription());
                         }
 
-                        et_post_description.setText(post.getDescription());
-                    }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                        }
+                    });
 
         // When click on cancel button, redirected to the main activity
         btn_cancel.setOnClickListener(new View.OnClickListener() {

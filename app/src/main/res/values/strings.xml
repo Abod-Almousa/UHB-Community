@@ -89,8 +89,14 @@
     <string name="delete_comment_cancel">Cancel</string>
 
     <!-- For the post -->
-    <string name="delete_post_dialog">Do yo want to delete this post?</string>
+    <string name="delete_post_dialog">Do you want to delete this post?</string>
     <string name="delete_post_yes">Delete</string>
     <string name="delete_post_cancel">Cancel</string>
+
+    <!-- For the profile -->
+    <string name="profile_btn_edit">Edit Profile</string>
+    <string name="profile_btn_send">Send Email</string>
+    <string name="post_label">Post</string>
+    <string name="bio_label">Bio</string>
 
 </resources>

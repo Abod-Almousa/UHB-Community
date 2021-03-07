@@ -2,6 +2,7 @@ package sa.edu.uhb.uhbcommunity.Adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +27,8 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import sa.edu.uhb.uhbcommunity.Fragments.ProfileFragment;
+import sa.edu.uhb.uhbcommunity.MainActivity;
 import sa.edu.uhb.uhbcommunity.Model.Comment;
 import sa.edu.uhb.uhbcommunity.Model.User;
 import sa.edu.uhb.uhbcommunity.R;
@@ -139,6 +143,16 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
                     dialog.show();
                 }
                 return true;
+            }
+        });
+
+        // When click on profile image to open this user profile
+        holder.iv_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.putExtra("userId",comment.getPublisher());
+                context.startActivity(intent);
             }
         });
     }

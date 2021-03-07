@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPopupHelper;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -36,6 +38,8 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import sa.edu.uhb.uhbcommunity.CommentActivity;
 import sa.edu.uhb.uhbcommunity.EditPostActivity;
+import sa.edu.uhb.uhbcommunity.Fragments.ProfileFragment;
+import sa.edu.uhb.uhbcommunity.MainActivity;
 import sa.edu.uhb.uhbcommunity.Model.Post;
 import sa.edu.uhb.uhbcommunity.Model.User;
 import sa.edu.uhb.uhbcommunity.R;
@@ -171,6 +175,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             }
         });
 
+        // When the user click on profile image to open this user profile
+        holder.iv_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.bottomNavigation.setItemSelected(R.id.nav_profile,true);
+
+                context.getSharedPreferences("PROFILE",Context.MODE_PRIVATE).edit()
+                        .putString("userId",post.getPublisher()).commit();
+
+                ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new ProfileFragment()).commit();
+            }
+        });
+
         // When the user click on option button to edit/delete post
         holder.iv_more.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -196,7 +214,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                                 AlertDialog dialog = new AlertDialog.Builder(context).create();
                                 dialog.setTitle(view.getResources().getString(R.string.delete_post_dialog));
 
-                                // Button "Yes" to delete the comment
+                                // Button "Yes" to delete the post
                                 dialog.setButton(AlertDialog.BUTTON_POSITIVE, view.getResources().getString(R.string.delete_post_yes), new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -317,20 +335,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                     }
                 });
     }
-    // To delete the post
-    private void deletePost(String image, String postid, DialogInterface dialogInterface) {
-
-        if (!image.equals("none")) {
-            StorageReference reference = FirebaseStorage.getInstance().getReferenceFromUrl(image);
-            reference.delete();
-        }
-        firebaseDatabase.child("Posts").child(postid).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                dialogInterface.dismiss();
-            }
-        });
-    }
 
     // To check if the post is saved by the user or not
     private void checkSave(String postid, ImageView iv_save) {
@@ -355,6 +359,21 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
                     }
                 });
+    }
+
+    // To delete the post
+    private void deletePost(String image, String postid, DialogInterface dialogInterface) {
+
+        if (!image.equals("none")) {
+            StorageReference reference = FirebaseStorage.getInstance().getReferenceFromUrl(image);
+            reference.delete();
+        }
+        firebaseDatabase.child("Posts").child(postid).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                dialogInterface.dismiss();
+            }
+        });
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
