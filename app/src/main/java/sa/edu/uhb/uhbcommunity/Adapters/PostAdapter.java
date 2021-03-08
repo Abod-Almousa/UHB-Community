@@ -259,6 +259,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
         // To check if the post is saved or not
         checkSave(post.getPostid(),holder.iv_save);
+
+        // To display the number of likes for each post
+        numOfLikes(post.getPostid(),holder.tv_no_of_likes);
+
+        // To display the number of comments for each post
+        numOfComments(post.getPostid(),holder.tv_no_of_comments);
     }
 
     @Override
@@ -322,6 +328,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                         // The post is liked
                         if(snapshot.child(firebaseUser.getUid()).exists()) {
                             iv_like.setImageResource(R.drawable.ic_liked);
+                            iv_like.setTag("Liked");
                         }
                         else {
                             iv_like.setImageResource(R.drawable.ic_like);
@@ -347,6 +354,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                         // The post is saved
                         if(snapshot.child(postid).exists()) {
                             iv_save.setImageResource(R.drawable.ic_saved);
+                            iv_save.setTag("Saved");
                         }
                         else {
                             iv_save.setImageResource(R.drawable.ic_save);
@@ -357,6 +365,40 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
+                    }
+                });
+    }
+
+    // To display the number of likes for each post
+    private void numOfLikes(String postid, TextView tv_no_of_likes) {
+        firebaseDatabase.child("Likes").child(postid)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot
+                                                     snapshot) {
+                        String numOfLikes= snapshot.getChildrenCount()
+                                + " " + context.getResources().getString(R.string.likes);
+                        tv_no_of_likes.setText(numOfLikes);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
+                });
+    }
+
+    // To display the number of comments for each post
+    private void numOfComments(String postid, TextView tv_no_of_comments) {
+        firebaseDatabase.child("Comments").child(postid)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot
+                                                     snapshot) {
+                        String numOfComments = snapshot.getChildrenCount()
+                                + " " + context.getResources().getString(R.string.comments);
+                        tv_no_of_comments.setText(numOfComments);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
                     }
                 });
     }
