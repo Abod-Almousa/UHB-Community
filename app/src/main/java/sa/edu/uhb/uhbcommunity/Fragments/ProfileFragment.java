@@ -1,6 +1,7 @@
 package sa.edu.uhb.uhbcommunity.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -33,6 +34,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import sa.edu.uhb.uhbcommunity.Adapters.PostAdapter;
+import sa.edu.uhb.uhbcommunity.EditProfileActivity;
 import sa.edu.uhb.uhbcommunity.Model.Post;
 import sa.edu.uhb.uhbcommunity.Model.User;
 import sa.edu.uhb.uhbcommunity.R;
@@ -177,8 +179,10 @@ public class ProfileFragment extends Fragment {
                 String text = profile_btn.getText().toString();
 
                 if(text.equals(view.getContext().getString(R.string.profile_btn_edit))) {
-                    // Write code here
+
                     // The user will be redirected to the edit profile page
+                    Intent intent = new Intent(getContext(), EditProfileActivity.class);
+                    startActivity(intent);
                 }
                 else {
                     // Write code here
@@ -214,6 +218,7 @@ public class ProfileFragment extends Fragment {
                     bio_card.setVisibility(View.GONE);
                 }
                 else {
+                    bio_card.setVisibility(View.VISIBLE);
                     tv_bio.setText(user.getBio());
                 }
 

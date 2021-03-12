@@ -98,5 +98,9 @@
     <string name="profile_btn_send">Send Email</string>
     <string name="post_label">Post</string>
     <string name="bio_label">Bio</string>
+    <string name="edit_profile_title">Edit Profile</string>
+    <string name="name_label">Name</string>
+    <string name="apply_edit_profile">Apply Changes</string>
+    <string name="change_photo">Change Photo</string>
 
 </resources>

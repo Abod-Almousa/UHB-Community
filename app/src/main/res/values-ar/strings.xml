@@ -100,5 +100,9 @@
     <string name="profile_btn_send">إرسال رسالة</string>
     <string name="post_label">منشور</string>
     <string name="bio_label">السيرة الذاتية</string>
+    <string name="edit_profile_title">تعديل الصفحة الشخصية</string>
+    <string name="name_label">الإسم</string>
+    <string name="apply_edit_profile">تطبيق التغييرات</string>
+    <string name="change_photo">تغيير الصورة</string>
 
 </resources>

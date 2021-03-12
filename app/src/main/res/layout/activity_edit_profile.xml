@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".EditProfileActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbar"
+        android:background="?android:attr/windowBackground">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:background="?android:attr/windowBackground">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/tv_cancel"
+                    android:text="@string/cancel"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_profile_title"
+                    android:textSize="18sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="15dp"
+                    android:textColor="@color/add_post_color"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/image">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/profile_image"
+            android:layout_margin="35dp"
+            android:elevation="10dp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:id="@+id/iv_profile"
+            android:layout_centerInParent="true"
+            android:elevation="10dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_change_image"
+        android:gravity="center"
+        android:layout_marginTop="-10dp"
+        android:text="@string/change_photo"
+        android:textColor="#43D8C9"
+        android:textSize="16sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/name_card"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/profile_btn"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:id="@+id/name_label"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/profile_gradient"
+                android:text="@string/name_label"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:gravity="center"/>
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/name_label"
+                android:layout_toStartOf="@+id/end"
+                android:background="@color/white"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:lineSpacingExtra="6dp"/>
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:id="@+id/end"
+                android:background="@drawable/profile_gradient"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:id="@+id/bio_card"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@drawable/profile_btn"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="85dp"
+                android:layout_height="match_parent"
+                android:id="@+id/bio_label"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/profile_gradient"
+                android:text="@string/bio_label"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:gravity="center"/>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/et_bio"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/bio_label"
+                android:layout_toStartOf="@+id/end2"
+                android:gravity="top"
+                android:background="@color/white"
+                android:padding="12dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:lineSpacingExtra="6dp"
+                android:maxLength="100"
+                app:met_maxCharacters="100"
+                app:met_hideUnderline="true"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:id="@+id/end2"
+                android:background="@drawable/profile_gradient"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_apply"
+        android:layout_margin="25dp"
+        android:padding="17dp"
+        android:background="@drawable/profile_gradient"
+        android:text="@string/apply_edit_profile"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textAllCaps="false"/>
+
+</LinearLayout>

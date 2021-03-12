@@ -31,6 +31,7 @@
                     app:entries="@array/categories"
                     app:arrowTint="@color/gray2"
                     app:textTint="@color/gray2"
+                    app:arrowDrawable="@drawable/ic_down_arrow"
                     android:textAlignment="center"
                     app:popupTextAlignment="center"
                     android:layout_marginEnd="8dp"/>
