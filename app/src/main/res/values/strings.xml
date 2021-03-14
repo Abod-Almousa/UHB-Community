@@ -103,4 +103,14 @@
     <string name="apply_edit_profile">Apply Changes</string>
     <string name="change_photo">Change Photo</string>
 
+    <!-- For the send email -->
+    <string name="send_email_title">Send Email</string>
+    <string name="send_email_btn">Send Email</string>
+    <string name="email_label">Email</string>
+    <string name="email_hint_to">To:</string>
+    <string name="email_hint_subject">Subject:</string>
+    <string name="email_hint_message">Message:</string>
+    <string name="send_error">Sorry! There is no mail application installed in your device.</string>
+    <string name="choose_app">Choose an Email application</string>
+
 </resources>

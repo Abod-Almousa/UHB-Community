@@ -105,4 +105,17 @@
     <string name="apply_edit_profile">تطبيق التغييرات</string>
     <string name="change_photo">تغيير الصورة</string>
 
+    <!-- For the send email -->
+    <string name="send_email_title">إرسال رسالة</string>
+    <string name="send_email_btn">إرسال الرسالة</string>
+    <string name="email_label">الرسالة</string>
+    <string name="email_hint_to">إلى:</string>
+    <string name="email_hint_subject">الموضوع:</string>
+    <string name="email_hint_message">الرسالة:</string>
+    <string name="send_error">عذرا! لايوجد تطبيق بريد مثبت على جهازك.</string>
+    <string name="choose_app">أختر أحد تطبيقات البريد</string>
+
+
+
+
 </resources>

@@ -38,6 +38,7 @@ import sa.edu.uhb.uhbcommunity.EditProfileActivity;
 import sa.edu.uhb.uhbcommunity.Model.Post;
 import sa.edu.uhb.uhbcommunity.Model.User;
 import sa.edu.uhb.uhbcommunity.R;
+import sa.edu.uhb.uhbcommunity.SendEmailActivity;
 
 
 public class ProfileFragment extends Fragment {
