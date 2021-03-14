@@ -186,8 +186,11 @@ public class ProfileFragment extends Fragment {
                     startActivity(intent);
                 }
                 else {
-                    // Write code here
+
                     // The user will be redirected to the Send email page
+                    Intent intent = new Intent(getContext(), SendEmailActivity.class);
+                    intent.putExtra("userId", userId);
+                    startActivity(intent);
                 }
             }
         });
