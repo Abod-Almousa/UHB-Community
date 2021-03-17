@@ -1,14 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbar"
+        android:background="?android:attr/windowBackground">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:id="@+id/toolbar"
+            android:background="?android:attr/windowBackground">
+
+            <androidx.appcompat.widget.SearchView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/search_bar"
+                android:layout_marginEnd="5dp"
+                app:searchIcon="@drawable/ic_search"
+                app:queryHint="@string/search_hint"
+                app:queryBackground="@drawable/search_background"/>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rg_search"
+        android:layout_below="@+id/appbar"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb_search_user"
+            android:layout_weight=".5"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:checked="true"
+            android:text="@string/search_user"
+            android:textSize="16sp"
+            android:textColor="@drawable/radio_color"
+            android:background="@drawable/radio_selector"
+            android:elevation="4dp"/>
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb_search_post"
+            android:layout_weight=".5"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:text="@string/search_post"
+            android:textSize="16sp"
+            android:textColor="@drawable/radio_color"
+            android:background="@drawable/radio_selector"
+            android:elevation="4dp"/>
+    </RadioGroup>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="search" />
+        android:layout_below="@+id/rg_search">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rv_users"
+                android:layout_marginBottom="15dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rv_posts"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:id="@+id/anim_search"
+        android:layout_below="@+id/rg_search"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/search_page"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="false"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:id="@+id/anim_no_result"
+        android:layout_below="@+id/rg_search"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/search_no_result"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="false"/>
+
+</RelativeLayout>

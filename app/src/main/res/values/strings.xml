@@ -113,4 +113,9 @@
     <string name="send_error">Sorry! There is no mail application installed in your device.</string>
     <string name="choose_app">Choose an Email application</string>
 
+    <!-- For the search view -->
+    <string name="search_hint">Search</string>
+    <string name="search_user">User</string>
+    <string name="search_post">Post</string>
+
 </resources>

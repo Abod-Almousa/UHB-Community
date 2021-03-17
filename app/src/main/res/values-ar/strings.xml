@@ -115,7 +115,9 @@
     <string name="send_error">عذرا! لايوجد تطبيق بريد مثبت على جهازك.</string>
     <string name="choose_app">أختر أحد تطبيقات البريد</string>
 
-
-
+    <!-- For the search view -->
+    <string name="search_hint">أبحث</string>
+    <string name="search_user">مستخدم</string>
+    <string name="search_post">منشور</string>
 
 </resources>
