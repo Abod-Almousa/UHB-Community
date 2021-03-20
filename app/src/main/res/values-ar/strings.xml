@@ -120,4 +120,9 @@
     <string name="search_user">مستخدم</string>
     <string name="search_post">منشور</string>
 
+    <!-- For the Notification -->
+    <string name="notification_title">الإشعارات</string>
+    <string name="notification_like">أعجب بمنشورك</string>
+    <string name="notification_comment">قام بالرد على منشورك</string>
+
 </resources>

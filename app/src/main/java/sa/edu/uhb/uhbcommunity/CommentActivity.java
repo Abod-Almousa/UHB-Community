@@ -215,6 +215,25 @@ public class CommentActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+        // To send the notification
+        sendCommentNotification(postId,publisherId);
+    }
+
+    // To send the notification when the user reply to a post
+    private void sendCommentNotification(String postId, String publisherId) {
+
+        // We used this if statement to avoid send notifications when you react with your posts
+        if(!firebaseUser.getUid().equals(publisherId)) {
+            HashMap<String,Object> map = new HashMap<>();
+            map.put("from",firebaseUser.getUid());
+            map.put("postId",postId);
+            map.put("text","comment");
+            map.put("date",date);
+            map.put("time",time);
+
+            firebaseDatabase.child("Notifications").child(publisherId).push().setValue(map);
+        }
     }
 
     // To get the current date of the comment "Only in EN"

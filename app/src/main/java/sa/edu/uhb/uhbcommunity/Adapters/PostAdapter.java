@@ -33,7 +33,12 @@ import com.google.firebase.storage.StorageReference;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import sa.edu.uhb.uhbcommunity.CommentActivity;
@@ -137,7 +142,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         holder.iv_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                likePost(post.getPostid(),holder.iv_like);
+                likePost(post.getPostid(),holder.iv_like,post.getPublisher());
             }
         });
 
@@ -273,16 +278,54 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     }
 
     // When the user like the post
-    private void likePost(String postid, ImageView iv_like) {
+    private void likePost(String postid, ImageView iv_like, String publisher) {
 
         // If the post is not liked, will like the post
         if(iv_like.getTag().equals("NotLiked")) {
             firebaseDatabase.child("Likes").child(postid).child(firebaseUser.getUid()).setValue(true);
+
+            // To send the notification
+            sendLikeNotification(postid,publisher);
         }
         else {
             // If the post is liked, will remove the like
             firebaseDatabase.child("Likes").child(postid).child(firebaseUser.getUid()).removeValue();
         }
+    }
+
+    // To send the notification when the user like a post
+    private void sendLikeNotification(String postid, String publisher) {
+
+        // We used this if statement to avoid send notifications when you react with your posts
+        if(!firebaseUser.getUid().equals(publisher)) {
+            String date = getCurrentDate();
+            String time = getCurrentTime();
+
+            HashMap<String,Object> map = new HashMap<>();
+            map.put("from",firebaseUser.getUid());
+            map.put("postId",postid);
+            map.put("text","like");
+            map.put("date",date);
+            map.put("time",time);
+
+            firebaseDatabase.child("Notifications").child(publisher).push().setValue(map);
+        }
+    }
+
+    // To get the current time of the notification "Only in EN"
+    private String getCurrentTime() {
+        DateFormat dateFormat = new SimpleDateFormat("h:mm a", Locale.ENGLISH);
+        String time = dateFormat.format(Calendar.getInstance().getTime());
+
+        return time;
+    }
+
+    // To get the current date of the notification "Only in EN"
+    private String getCurrentDate() {
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH);
+        String date = dateFormat.format(Calendar.getInstance().getTime());
+
+        return date;
     }
 
     // When the user save the post
