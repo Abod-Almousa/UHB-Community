@@ -122,5 +122,6 @@
     <string name="notification_title">Notifications</string>
     <string name="notification_like">Liked your post</string>
     <string name="notification_comment">Replied to your post</string>
+    <string name="view_post_title">Post</string>
 
 </resources>

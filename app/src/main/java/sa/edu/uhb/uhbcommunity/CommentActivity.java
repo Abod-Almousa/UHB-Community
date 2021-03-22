@@ -225,14 +225,20 @@ public class CommentActivity extends AppCompatActivity {
 
         // We used this if statement to avoid send notifications when you react with your posts
         if(!firebaseUser.getUid().equals(publisherId)) {
+
+            DatabaseReference reference = firebaseDatabase.child("Notifications").child(publisherId);
+            String notificationId = reference.push().getKey();
+
             HashMap<String,Object> map = new HashMap<>();
+            map.put("notificationId",notificationId);
             map.put("from",firebaseUser.getUid());
             map.put("postId",postId);
             map.put("text","comment");
             map.put("date",date);
             map.put("time",time);
+            map.put("seen",false);
 
-            firebaseDatabase.child("Notifications").child(publisherId).push().setValue(map);
+            reference.child(notificationId).setValue(map);
         }
     }
 

@@ -15,4 +15,5 @@
 
     <color name="btn_start_activity">#43D8C9</color>
     <color name="add_post_color">#43D8C9</color>
+    <color name="not_seen_color">#ECF5FD</color>
 </resources>

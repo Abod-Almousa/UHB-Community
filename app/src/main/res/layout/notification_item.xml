@@ -9,8 +9,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/notification_card"
         app:cardCornerRadius="5dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        app:cardBackgroundColor="#ECF5FD"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="3dp"
         app:cardElevation="3dp">
@@ -24,7 +23,6 @@
                 android:layout_height="40dp"
                 android:id="@+id/iv_profile"
                 android:layout_alignParentStart="true"
-                android:src="@drawable/ic_tmp_profile"
                 android:layout_margin="10dp"/>
 
             <LinearLayout
@@ -39,7 +37,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_username"
-                    android:text="Abod_963"
                     android:textStyle="bold"
                     android:layout_margin="1dp"/>
 
@@ -47,7 +44,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_fullName"
-                    android:text="Abdulrahman Almousa"
                     android:layout_margin="1dp"/>
             </LinearLayout>
 
@@ -57,7 +53,6 @@
                 android:id="@+id/tv_date"
                 android:layout_alignParentEnd="true"
                 android:layout_margin="10dp"
-                android:text="19/3/2021"
                 android:textSize="12sp"/>
 
             <TextView
@@ -67,7 +62,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/tv_date"
                 android:layout_marginEnd="10dp"
-                android:text="6:30 PM"
                 android:textSize="12sp"/>
 
             <TextView
@@ -76,7 +70,6 @@
                 android:id="@+id/tv_text"
                 android:layout_below="@id/iv_profile"
                 android:layout_margin="10dp"
-                android:text="Abdo liked yor post"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:lineSpacingExtra="5dp"/>

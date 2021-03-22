@@ -8,8 +8,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +27,7 @@ import sa.edu.uhb.uhbcommunity.EditPostActivity;
 import sa.edu.uhb.uhbcommunity.Model.Notification;
 import sa.edu.uhb.uhbcommunity.Model.User;
 import sa.edu.uhb.uhbcommunity.R;
+import sa.edu.uhb.uhbcommunity.ViewNotifiedPostActivity;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder>{
 
@@ -31,6 +35,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     private List<Notification> notifications;
 
     private DatabaseReference firebaseDatabase;
+    private FirebaseUser firebaseUser;
 
     public NotificationAdapter(Context context, List<Notification> notifications) {
         this.context = context;
@@ -51,6 +56,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         // Firebase
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         Notification notification = notifications.get(position);
 
@@ -67,6 +73,14 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         // To get the date and time of the notification
         holder.tv_date.setText(notification.getDate());
         holder.tv_time.setText(notification.getTime());
+
+        // To check if the notification is seen or not
+        if(notification.getSeen().equals(true)) {
+            holder.notification_card.setCardBackgroundColor(context.getResources().getColor(R.color.white));
+        }
+        else {
+            holder.notification_card.setCardBackgroundColor(context.getResources().getColor(R.color.not_seen_color));
+        }
 
         /* End of notification info */
 
@@ -107,14 +121,15 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             @Override
             public void onClick(View view) {
 
+                // To set the notification as seen
+                firebaseDatabase.child("Notifications").child(firebaseUser.getUid())
+                        .child(notification.getNotificationId()).child("seen").setValue(true);
+
                 // The user will be redirected to the view post page
-
-                // This page is not created yet.
-
-                /* Intent intent = new Intent(context, ViewPostActivity.class);
+                Intent intent = new Intent(context, ViewNotifiedPostActivity.class);
                 // To send the post information to the view post page
                 intent.putExtra("postId",notification.getPostId());
-                context.startActivity(intent); */
+                context.startActivity(intent);
             }
         });
     }
@@ -126,6 +141,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        public CardView notification_card;
         public CircleImageView iv_profile;
         public TextView tv_username;
         public TextView tv_fullName;
@@ -136,6 +152,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            notification_card = itemView.findViewById(R.id.notification_card);
             iv_profile = itemView.findViewById(R.id.iv_profile);
             tv_username = itemView.findViewById(R.id.tv_username);
             tv_fullName = itemView.findViewById(R.id.tv_fullName);

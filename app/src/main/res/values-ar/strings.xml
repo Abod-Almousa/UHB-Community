@@ -124,5 +124,6 @@
     <string name="notification_title">الإشعارات</string>
     <string name="notification_like">أعجب بمنشورك</string>
     <string name="notification_comment">قام بالرد على منشورك</string>
+    <string name="view_post_title">المنشور</string>
 
 </resources>

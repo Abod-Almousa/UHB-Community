@@ -301,14 +301,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             String date = getCurrentDate();
             String time = getCurrentTime();
 
+            DatabaseReference reference = firebaseDatabase.child("Notifications").child(publisher);
+            String notificationId = reference.push().getKey();
+
             HashMap<String,Object> map = new HashMap<>();
+            map.put("notificationId",notificationId);
             map.put("from",firebaseUser.getUid());
             map.put("postId",postid);
             map.put("text","like");
             map.put("date",date);
             map.put("time",time);
+            map.put("seen",false);
 
-            firebaseDatabase.child("Notifications").child(publisher).push().setValue(map);
+            reference.child(notificationId).setValue(map);
         }
     }
 
