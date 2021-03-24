@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/drawer_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.HomeFragment">
-
-    <com.google.android.material.appbar.AppBarLayout
+    
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/appbar"
-        android:background="?android:attr/windowBackground">
+        android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/toolbar"
+            android:id="@+id/appbar"
             android:background="?android:attr/windowBackground">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/toolbar"
+                android:background="?android:attr/windowBackground">
 
                 <org.angmarch.views.NiceSpinner
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/list_category"
-                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="end"
                     android:elevation="3dp"
                     app:entries="@array/categories"
                     app:arrowTint="@color/gray2"
@@ -35,24 +36,33 @@
                     android:textAlignment="center"
                     app:popupTextAlignment="center"
                     android:layout_marginEnd="8dp"/>
-            </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appbar"
-        android:id="@+id/rv_posts"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appbar"
+            android:id="@+id/rv_posts"/>
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="250dp"
-        android:layout_height="180dp"
-        android:id="@+id/anim_page_loading"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:visibility="gone"
-        app:lottie_rawRes="@raw/page_loading"
-        app:lottie_autoPlay="false"
-        app:lottie_loop="true"/>
-</RelativeLayout>
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="250dp"
+            android:layout_height="180dp"
+            android:id="@+id/anim_page_loading"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            app:lottie_rawRes="@raw/page_loading"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"/>
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/nav_view"
+        android:layout_gravity="start"
+        android:background="@color/white"
+        app:headerLayout="@layout/drawer_menu_header"
+        app:menu="@menu/drawer_menu"/>
+</androidx.drawerlayout.widget.DrawerLayout>

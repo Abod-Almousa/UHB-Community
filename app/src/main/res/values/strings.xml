@@ -124,4 +124,19 @@
     <string name="notification_comment">Replied to your post</string>
     <string name="view_post_title">Post</string>
 
+    <!-- For the drawer menu -->
+    <string name="open">Open navigation drawer</string>
+    <string name="close">Close navigation drawer</string>
+
+    <string name="uhb">UOHB</string>
+    <string name="uhb_community">UHB Community</string>
+    <string name="other">Other</string>
+
+    <string name="links">Important Links</string>
+    <string name="contact">Contact Us</string>
+    <string name="about">About Us</string>
+    <string name="panel">Control Panel</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Log out</string>
+
 </resources>

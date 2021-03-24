@@ -126,4 +126,16 @@
     <string name="notification_comment">قام بالرد على منشورك</string>
     <string name="view_post_title">المنشور</string>
 
+    <!-- For the drawer menu -->
+    <string name="uhb">جامعة حفرالباطن</string>
+    <string name="uhb_community">عن التطبيق</string>
+    <string name="other">المزيد</string>
+
+    <string name="links">روابط مهمة</string>
+    <string name="contact">تواصل معنا</string>
+    <string name="about">من نحن</string>
+    <string name="panel">لوحة التحكم</string>
+    <string name="settings">الإعدادات</string>
+    <string name="logout">تسجيل الخروج</string>
+
 </resources>

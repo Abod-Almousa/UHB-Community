@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/uhb">
+        <menu>
+            <item android:id="@+id/links"
+                android:icon="@drawable/ic_drawer_links"
+                android:title="@string/links"/>
+        </menu>
+    </item>
+
+    <item android:title="@string/uhb_community">
+
+        <menu>
+            <item android:id="@+id/contact"
+                android:icon="@drawable/ic_drawer_contactus"
+                android:title="@string/contact"/>
+
+            <item android:id="@+id/about"
+                android:icon="@drawable/ic_drawer_aboutus"
+                android:title="@string/about"/>
+        </menu>
+    </item>
+
+    <item android:title="@string/other">
+        <menu>
+            <item android:id="@+id/panel"
+                android:icon="@drawable/ic_drawer_control_panel"
+                android:title="@string/panel"/>
+
+            <item android:id="@+id/settings"
+                android:icon="@drawable/ic_drawer_settings"
+                android:title="@string/settings"/>
+
+            <item android:id="@+id/logout"
+                android:icon="@drawable/ic_drawer_logout"
+                android:title="@string/logout"/>
+        </menu>
+    </item>
+</menu>

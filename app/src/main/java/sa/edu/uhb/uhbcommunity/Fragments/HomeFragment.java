@@ -1,20 +1,32 @@
 package sa.edu.uhb.uhbcommunity.Fragments;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -30,6 +42,8 @@ import java.util.List;
 import sa.edu.uhb.uhbcommunity.Adapters.PostAdapter;
 import sa.edu.uhb.uhbcommunity.Model.Post;
 import sa.edu.uhb.uhbcommunity.R;
+import sa.edu.uhb.uhbcommunity.ResetPassActivity;
+import sa.edu.uhb.uhbcommunity.SendEmailActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -41,11 +55,64 @@ public class HomeFragment extends Fragment {
 
     private LottieAnimationView anim_page_loading;
 
+    // Drawer navigation layout
+    private DrawerLayout drawer_layout;
+    private Toolbar toolbar;
+    private ActionBarDrawerToggle toggle;
+    private NavigationView nav_view;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        /* Drawer navigation layout */
+        drawer_layout = view.findViewById(R.id.drawer_layout);
+        toolbar = view.findViewById(R.id.toolbar);
+        nav_view = view.findViewById(R.id.nav_view);
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        activity.setTitle("");
+        toggle = new ActionBarDrawerToggle(getActivity(),drawer_layout,toolbar,R.string.open,R.string.close);
+        drawer_layout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+
+                    case R.id.links:
+
+                        break;
+
+                    case R.id.contact:
+
+                        break;
+
+                    case R.id.about:
+
+                        break;
+
+                    case R.id.panel:
+
+                        break;
+
+                    case R.id.settings:
+
+                        break;
+
+                    case R.id.logout:
+
+                        break;
+                }
+                return false;
+            }
+        });
+        /* End of Drawer navigation layout */
 
         // To store the posts in this list
         postList = new ArrayList<>();
@@ -140,5 +207,18 @@ public class HomeFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.drawer_menu, menu);
+    }
+
+    @Override // drawer button
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(toggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
