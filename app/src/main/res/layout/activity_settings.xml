@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DrawerMenu.SettingsActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbar"
+        android:background="?android:attr/windowBackground">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            app:title="@string/settings_title"
+            app:titleTextColor="@color/black"
+            android:background="?android:attr/windowBackground"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/anim_settings"
+        android:layout_below="@id/appbar"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        app:lottie_rawRes="@raw/settings"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/anim_settings"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/profile_btn"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:id="@+id/start_color1"
+                android:background="@drawable/profile_gradient"
+                android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/language_label"
+                android:layout_toEndOf="@id/start_color1"
+                android:layout_above="@+id/rg_language"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/settings_language"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#03DAC5"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rg_language"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@id/start_color1"
+                android:layout_margin="0dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rb_english"
+                    android:layout_weight=".5"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:text="@string/settings_language_en"
+                    android:textSize="15sp"
+                    android:textColor="@drawable/radio_color"
+                    android:background="@drawable/radio_selector"
+                    android:elevation="2dp"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rb_arabic"
+                    android:layout_weight=".5"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:text="@string/settings_language_ar"
+                    android:textSize="15sp"
+                    android:textColor="@drawable/radio_color"
+                    android:background="@drawable/radio_selector"
+                    android:elevation="2dp"/>
+            </RadioGroup>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/profile_btn"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="60dp"
+                android:id="@+id/start_color2"
+                android:background="#fed049"
+                android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:id="@+id/change_pass"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/start_color2"
+                android:background="@color/white"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:text="@string/settings_change_pass"
+                android:textColor="#fed049"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/profile_btn"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="60dp"
+                android:id="@+id/start_color4"
+                android:background="#9b3675"
+                android:layout_alignParentStart="true"/>
+
+            <TextView
+                android:id="@+id/terms"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/start_color4"
+                android:background="@color/white"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:text="@string/settings_termsOfUse"
+                android:textColor="#9b3675"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

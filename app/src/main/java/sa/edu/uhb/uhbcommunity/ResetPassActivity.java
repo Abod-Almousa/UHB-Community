@@ -42,8 +42,6 @@ public class ResetPassActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ResetPassActivity.this,LoginActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
@@ -60,8 +58,6 @@ public class ResetPassActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(ResetPassActivity.this,LoginActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
@@ -124,9 +120,9 @@ public class ResetPassActivity extends AppCompatActivity {
                         @Override
                         public void onClick(final DialogInterface dialog, int which) {
 
-                            Intent intent = new Intent(ResetPassActivity.this,LoginActivity.class);
+                            /* Intent intent = new Intent(ResetPassActivity.this,LoginActivity.class);
                             startActivity(intent);
-                            finish();
+                            finish(); */
                         }
                     });
                     alertDialog.show();
@@ -143,8 +139,6 @@ public class ResetPassActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(ResetPassActivity.this,LoginActivity.class);
-        startActivity(intent);
         finish();
     }
 }

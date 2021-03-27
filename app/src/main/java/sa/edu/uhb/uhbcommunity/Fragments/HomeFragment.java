@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -40,10 +41,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sa.edu.uhb.uhbcommunity.Adapters.PostAdapter;
+import sa.edu.uhb.uhbcommunity.DrawerMenu.AboutUsActivity;
+import sa.edu.uhb.uhbcommunity.DrawerMenu.ContactActivity;
+import sa.edu.uhb.uhbcommunity.DrawerMenu.ControlPanelActivity;
+import sa.edu.uhb.uhbcommunity.DrawerMenu.LinksActivity;
+import sa.edu.uhb.uhbcommunity.DrawerMenu.SettingsActivity;
 import sa.edu.uhb.uhbcommunity.Model.Post;
 import sa.edu.uhb.uhbcommunity.R;
 import sa.edu.uhb.uhbcommunity.ResetPassActivity;
 import sa.edu.uhb.uhbcommunity.SendEmailActivity;
+import sa.edu.uhb.uhbcommunity.StartActivity;
 
 public class HomeFragment extends Fragment {
 
@@ -79,6 +86,10 @@ public class HomeFragment extends Fragment {
         drawer_layout.addDrawerListener(toggle);
         toggle.syncState();
 
+        // To set the visibility of the control panel
+        /* Menu menu = nav_view.getMenu();
+        menu.findItem(R.id.panel).setVisible(false); */
+
         nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -86,27 +97,35 @@ public class HomeFragment extends Fragment {
                 switch (item.getItemId()) {
 
                     case R.id.links:
-
+                        Intent links = new Intent(getContext(), LinksActivity.class);
+                        startActivity(links);
                         break;
 
                     case R.id.contact:
-
+                        Intent contact = new Intent(getContext(), ContactActivity.class);
+                        startActivity(contact);
                         break;
 
                     case R.id.about:
-
+                        Intent about = new Intent(getContext(), AboutUsActivity.class);
+                        startActivity(about);
                         break;
 
                     case R.id.panel:
-
+                        Intent panel = new Intent(getContext(), ControlPanelActivity.class);
+                        startActivity(panel);
                         break;
 
                     case R.id.settings:
-
+                        Intent settings = new Intent(getContext(), SettingsActivity.class);
+                        startActivity(settings);
                         break;
 
                     case R.id.logout:
-
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent = new Intent(getContext(), StartActivity.class);
+                        startActivity(intent);
+                        activity.finish();
                         break;
                 }
                 return false;

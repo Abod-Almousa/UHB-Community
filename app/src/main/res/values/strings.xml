@@ -139,4 +139,42 @@
     <string name="settings">Settings</string>
     <string name="logout">Log out</string>
 
+    <!-- For the Links -->
+    <string name="link_title">Important Links</string>
+    <string name="link1">UoHB Twitter</string>
+    <string name="link2">REG Twitter</string>
+    <string name="link3">DSA Twitter</string>
+    <string name="link4">Edhaah Twitter</string>
+    <string name="link5">UoHB Website</string>
+    <string name="link6">SIS Website</string>
+    <string name="link7">Blackboard Website</string>
+
+    <!-- For the contact us -->
+    <string name="contact_title">Contact Us</string>
+
+    <!-- For the about us -->
+    <string name="about_title">About Us</string>
+    <string name="version_label">Version:</string>
+    <string name="version">1.0.0</string>
+    <string name="dev_label">Developers:</string>
+    <string name="dev_1">Eng. Abdulrahman Mohammed AL-mousa</string>
+    <string name="dev_2">Eng. Abdullah Aldilaijan</string>
+    <string name="about_label">About Application:</string>
+    <string name="about_content">This application is developed as a graduation project of major Software Engineering at UOHB 2021. The main idea of the application is to facilitate the communication within the community of the University of Hafr Al Batin.</string>
+    <string name="rights">All rights reserved 2020/2021</string>
+
+    <!-- For the control panel -->
+    <string name="panel_title">Control Panel</string>
+    <string name="delete_posts">Delete Post</string>
+    <string name="add_moderator">Add New Moderator</string>
+    <string name="delete_moderator">Delete Moderator</string>
+    <string name="verify_account">Verify Account</string>
+
+    <!-- For the settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_change_pass">Change Password</string>
+    <string name="settings_termsOfUse">Terms of use</string>
+    <string name="settings_language">Application Language</string>
+    <string name="settings_language_en">English</string>
+    <string name="settings_language_ar">Arabic</string>
 </resources>

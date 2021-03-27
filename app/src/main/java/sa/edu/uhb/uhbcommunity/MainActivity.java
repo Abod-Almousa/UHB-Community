@@ -3,11 +3,16 @@ package sa.edu.uhb.uhbcommunity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
+
+import java.util.Locale;
 
 import sa.edu.uhb.uhbcommunity.Fragments.HomeFragment;
 import sa.edu.uhb.uhbcommunity.Fragments.NotificationFragment;
@@ -19,11 +24,16 @@ public class MainActivity extends AppCompatActivity {
     public static ChipNavigationBar bottomNavigation;
     private Fragment selectorFragment;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getLocale();
         setContentView(R.layout.activity_main);
+
+        /* if( getIntent().getBooleanExtra("Exit me", false)){
+            finish();
+            return; // add this to prevent from doing unnecessary stuffs
+        } */
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
@@ -83,5 +93,34 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
         }
 
+    }
+
+    private void setLocale(String language) {
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.locale = locale;
+        getBaseContext().getResources().updateConfiguration(configuration,getBaseContext().getResources().getDisplayMetrics());
+        SharedPreferences.Editor editor = getSharedPreferences("Language",MODE_PRIVATE).edit();
+        editor.putString("language",language);
+        editor.apply();
+    }
+
+    public void getLocale() {
+        SharedPreferences preferences = getSharedPreferences("Language", Activity.MODE_PRIVATE);
+        String language = preferences.getString("language","");
+        setLocale(language);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+
+        /* Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("Exit me", true);
+        startActivity(intent);
+        finish(); */
     }
 }

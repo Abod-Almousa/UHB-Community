@@ -12,7 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UHBCommunity">
-        <activity android:name=".ViewNotifiedPostActivity"></activity>
+        <activity android:name=".DrawerMenu.SettingsActivity"></activity>
+        <activity android:name=".DrawerMenu.ControlPanelActivity" />
+        <activity android:name=".DrawerMenu.AboutUsActivity" />
+        <activity android:name=".DrawerMenu.ContactActivity" />
+        <activity android:name=".DrawerMenu.LinksActivity" />
+        <activity android:name=".ViewNotifiedPostActivity" />
         <activity android:name=".SendEmailActivity" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".EditPostActivity" />
