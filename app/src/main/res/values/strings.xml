@@ -163,13 +163,6 @@
     <string name="about_content">This application is developed as a graduation project of major Software Engineering at UOHB 2021. The main idea of the application is to facilitate the communication within the community of the University of Hafr Al Batin.</string>
     <string name="rights">All rights reserved 2020/2021</string>
 
-    <!-- For the control panel -->
-    <string name="panel_title">Control Panel</string>
-    <string name="delete_posts">Delete Post</string>
-    <string name="add_moderator">Add New Moderator</string>
-    <string name="delete_moderator">Delete Moderator</string>
-    <string name="verify_account">Verify Account</string>
-
     <!-- For the settings -->
     <string name="settings_title">Settings</string>
     <string name="settings_change_pass">Change Password</string>
@@ -177,4 +170,10 @@
     <string name="settings_language">Application Language</string>
     <string name="settings_language_en">English</string>
     <string name="settings_language_ar">Arabic</string>
+
+    <!-- For the admin/moderator-->
+    <string name="toast_verified">Account has been verified</string>
+    <string name="toast_add_moderator">This user has been set as a moderator</string>
+    <string name="toast_delete_moderator">This moderator has been removed</string>
+
 </resources>

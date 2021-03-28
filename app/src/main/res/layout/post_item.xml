@@ -29,7 +29,8 @@
                 android:id="@+id/iv_more"
                 android:layout_alignParentEnd="true"
                 android:src="@drawable/ic_more"
-                android:layout_margin="5dp"/>
+                android:layout_margin="5dp"
+                android:visibility="invisible"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -53,13 +54,19 @@
                     android:layout_margin="1dp"/>
             </LinearLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/fixer"
+                android:layout_below="@+id/user_details"/>
+
             <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
                 android:id="@+id/iv_verified"
                 android:layout_toEndOf="@+id/user_details"
-                android:layout_above="@+id/iv_post_image"
-                android:layout_marginBottom="10dp"
+                android:layout_above="@+id/fixer"
+                android:layout_marginBottom="13dp"
                 android:src="@drawable/ic_verified"
                 android:layoutDirection="ltr"
                 android:visibility="gone"/>
@@ -146,7 +153,6 @@
                     android:layout_marginStart="25dp"
                     android:layout_marginEnd="25dp"
                     android:layoutDirection="ltr"/>
-
             </LinearLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

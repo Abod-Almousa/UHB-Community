@@ -26,6 +26,16 @@
                 android:src="@drawable/ic_tmp_profile"
                 android:layout_margin="10dp"/>
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/iv_more"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_more"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:visibility="invisible"/>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,13 +50,13 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_username"
                     android:textStyle="bold"
-                    android:layout_margin="1dp"/>
+                    android:layout_margin="0dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_fullName"
-                    android:layout_margin="1dp"/>
+                    android:layout_marginTop="1dp"/>
             </LinearLayout>
 
             <TextView
@@ -56,12 +66,12 @@
                 android:layout_below="@+id/user_details"/>
 
             <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
                 android:id="@+id/iv_verified"
                 android:layout_toEndOf="@+id/user_details"
                 android:layout_above="@+id/fixer"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="3dp"
                 android:src="@drawable/ic_verified"
                 android:layoutDirection="ltr"
                 android:visibility="gone"/>

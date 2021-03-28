@@ -1,12 +1,9 @@
 package sa.edu.uhb.uhbcommunity.Fragments;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,15 +12,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.navigation.NavigationView;
@@ -43,13 +37,10 @@ import java.util.List;
 import sa.edu.uhb.uhbcommunity.Adapters.PostAdapter;
 import sa.edu.uhb.uhbcommunity.DrawerMenu.AboutUsActivity;
 import sa.edu.uhb.uhbcommunity.DrawerMenu.ContactActivity;
-import sa.edu.uhb.uhbcommunity.DrawerMenu.ControlPanelActivity;
 import sa.edu.uhb.uhbcommunity.DrawerMenu.LinksActivity;
 import sa.edu.uhb.uhbcommunity.DrawerMenu.SettingsActivity;
 import sa.edu.uhb.uhbcommunity.Model.Post;
 import sa.edu.uhb.uhbcommunity.R;
-import sa.edu.uhb.uhbcommunity.ResetPassActivity;
-import sa.edu.uhb.uhbcommunity.SendEmailActivity;
 import sa.edu.uhb.uhbcommunity.StartActivity;
 
 public class HomeFragment extends Fragment {
@@ -109,11 +100,6 @@ public class HomeFragment extends Fragment {
                     case R.id.about:
                         Intent about = new Intent(getContext(), AboutUsActivity.class);
                         startActivity(about);
-                        break;
-
-                    case R.id.panel:
-                        Intent panel = new Intent(getContext(), ControlPanelActivity.class);
-                        startActivity(panel);
                         break;
 
                     case R.id.settings:

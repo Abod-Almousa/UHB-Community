@@ -24,10 +24,6 @@
 
     <item android:title="@string/other">
         <menu>
-            <item android:id="@+id/panel"
-                android:icon="@drawable/ic_drawer_control_panel"
-                android:title="@string/panel"/>
-
             <item android:id="@+id/settings"
                 android:icon="@drawable/ic_drawer_settings"
                 android:title="@string/settings"/>

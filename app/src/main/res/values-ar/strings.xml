@@ -162,13 +162,6 @@
     <string name="about_content">تم تطوير هذا التطبيق كمشروع تخرج من تخصص هندسة البرمجيات في جامعة حفرالباطن ٢٠٢١ . الفكرة الرئيسية من التطبيق هي تسهيل التواصل داخل مجتمع جامعة حفر الباطن.</string>
     <string name="rights">جميع الحقوق محفوظة 2020/2021</string>
 
-    <!-- For the control panel -->
-    <string name="panel_title">لوحة التحكم</string>
-    <string name="delete_posts">حذف منشور</string>
-    <string name="add_moderator">إضافة مشرف جديد</string>
-    <string name="delete_moderator">حذف مشرف</string>
-    <string name="verify_account">توثيق حساب</string>
-
     <!-- For the settings -->
     <string name="settings_title">الإعدادات</string>
     <string name="settings_change_pass">تغيير كلمة المرور</string>
@@ -176,5 +169,11 @@
     <string name="settings_language">لغة التطبيق</string>
     <string name="settings_language_en">الإنجليزية</string>
     <string name="settings_language_ar">العربية</string>
+
+    <!-- For the admin/moderator-->
+    <string name="toast_verified">تم توثيق الحساب</string>
+    <string name="toast_add_moderator">تم تعيين هذا المستخدم كمشرف</string>
+    <string name="toast_delete_moderator">تم حذف هذا المشرف</string>
+
 
 </resources>

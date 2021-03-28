@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/verify_account"
+        android:title="@string/verify_account_"/>
+
+    <item
+        android:id="@+id/add_moderator"
+        android:title="@string/add_moderator_"/>
+
+    <item
+        android:id="@+id/delete_moderator"
+        android:title="@string/delete_moderator_"/>
+
+</menu>

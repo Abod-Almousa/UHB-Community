@@ -1,10 +1,8 @@
 package sa.edu.uhb.uhbcommunity.Adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,10 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.view.menu.MenuBuilder;
-import androidx.appcompat.view.menu.MenuPopupHelper;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
@@ -75,6 +71,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        // Initialize post options menu
+        PopupMenu menu = new PopupMenu(context,holder.iv_more);
+        menu.getMenuInflater().inflate(R.menu.post_option_menu,menu.getMenu());
 
         Post post = posts.get(position);
 
@@ -131,12 +131,38 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
         // To set visibility of the option button
         // This button will be visible just for your posts to edit/delete the post
-        if(post.getPublisher().equals(firebaseUser.getUid())) {
+        /* if(post.getPublisher().equals(firebaseUser.getUid())) {
             holder.iv_more.setVisibility(View.VISIBLE);
         }
         else {
             holder.iv_more.setVisibility(View.INVISIBLE);
-        }
+        } */
+
+        /* To set visibility of the option button
+           This button will be visible just for your posts to edit/delete the post
+            or for admin/moderator to delete the post */
+        firebaseDatabase.child("Users").child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+
+                if(post.getPublisher().equals(firebaseUser.getUid())) {
+                    holder.iv_more.setVisibility(View.VISIBLE);
+                }
+                else if(!user.getRole().equals("user")) {
+                    holder.iv_more.setVisibility(View.VISIBLE);
+                    menu.getMenu().findItem(R.id.edit_post).setVisible(false);
+                }
+                else {
+                    holder.iv_more.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         // When the user click on like button to like/unlike the post
         holder.iv_like.setOnClickListener(new View.OnClickListener() {
@@ -198,8 +224,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         holder.iv_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu menu = new PopupMenu(context,holder.iv_more);
-                menu.getMenuInflater().inflate(R.menu.post_option_menu,menu.getMenu());
+
 
                 menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
