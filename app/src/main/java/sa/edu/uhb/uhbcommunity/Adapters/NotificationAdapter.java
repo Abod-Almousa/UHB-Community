@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -132,6 +133,30 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 context.startActivity(intent);
             }
         });
+
+        checkVerifiedAccount(notification.getFrom(),holder.iv_verified);
+    }
+
+    // To check if the account is verified by the admin or not, to set the blue star
+    private void checkVerifiedAccount(String id, ImageView iv_verified) {
+
+        firebaseDatabase.child("Verified").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.child(id).exists()) {
+                    iv_verified.setVisibility(View.VISIBLE);
+                }
+                else {
+                    iv_verified.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override
@@ -148,6 +173,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         public TextView tv_date;
         public TextView tv_time;
         public TextView tv_text;
+        public ImageView iv_verified;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -159,6 +185,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             tv_date = itemView.findViewById(R.id.tv_date);
             tv_time = itemView.findViewById(R.id.tv_time);
             tv_text = itemView.findViewById(R.id.tv_text);
+            iv_verified = itemView.findViewById(R.id.iv_verified);
         }
     }
 }

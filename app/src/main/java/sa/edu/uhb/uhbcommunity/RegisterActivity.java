@@ -24,20 +24,31 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import sa.edu.uhb.uhbcommunity.DrawerMenu.SettingsActivity;
+import sa.edu.uhb.uhbcommunity.Model.Post;
+import sa.edu.uhb.uhbcommunity.Model.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText et_username, et_fullName, et_email, et_password;
     private CheckBox cb_accept_rules;
     private Button btn_register;
-    private TextView tv_login_user, cb_error;
+    private TextView tv_login_user, cb_error, terms_of_use;
 
     private ProgressDialog dialog;
     private TextInputLayout inputLayout;
+    private String usedUsername = "not used";
+    private List<String> userList;
 
     private DatabaseReference firebaseDatabase;
     private FirebaseAuth firebaseAuth;
@@ -55,9 +66,11 @@ public class RegisterActivity extends AppCompatActivity {
         btn_register = findViewById(R.id.btn_register);
         tv_login_user = findViewById(R.id.tv_login_user);
         cb_error = findViewById(R.id.cb_error);
+        terms_of_use = findViewById(R.id.terms_of_use);
 
         dialog = new ProgressDialog(this);
         inputLayout = findViewById(R.id.password_layout);
+        userList = new ArrayList<>();
 
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
@@ -122,6 +135,15 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        // When click on terms of use button, he will be redirected to the rules page
+        terms_of_use.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegisterActivity.this, RulesActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // When click on register button
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,56 +154,89 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = et_email.getText().toString();
                 String password = et_password.getText().toString();
 
-                // To verify the data entered
-                if(TextUtils.isEmpty(username)) {
-                    et_username.setError(getString(R.string.required_filed));
+                formValidation(username,fullName,email,password);
+            }
+        });
+
+    }
+
+    private void formValidation(String username, String fullName, String email, String password) {
+        // To verify the data entered
+        if(TextUtils.isEmpty(username)) {
+            et_username.setError(getString(R.string.required_filed));
+            et_username.setFocusable(true);
+            et_username.setBackgroundResource(R.drawable.error_edit_text);
+        }
+        else if(TextUtils.isEmpty(fullName)) {
+            et_fullName.setError(getString(R.string.required_filed));
+            et_fullName.setFocusable(true);
+            et_fullName.setBackgroundResource(R.drawable.error_edit_text);
+        }
+        else if (TextUtils.isEmpty(email)) {
+            et_email.setError(getString(R.string.required_filed));
+            et_email.setFocusable(true);
+            et_email.setBackgroundResource(R.drawable.error_edit_text);
+        }
+        else if (TextUtils.isEmpty(password)) {
+            et_password.setError(getString(R.string.required_filed));
+            et_password.setFocusable(true);
+            et_password.setBackgroundResource(R.drawable.error_edit_text);
+        }
+        else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            et_email.setError(getString(R.string.invalid_email));
+            et_email.setFocusable(true);
+            et_email.setBackgroundResource(R.drawable.error_edit_text);
+        }
+        else if(et_password.length() < 8) {
+            inputLayout.setPasswordVisibilityToggleEnabled(false);
+            et_password.setError(getString(R.string.password_length));
+            et_password.setFocusable(true);
+            et_password.setBackgroundResource(R.drawable.error_edit_text);
+
+            et_password.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    inputLayout.setPasswordVisibilityToggleEnabled(true);
+                    et_password.setError(null);
+                }
+            });
+        }
+        else if (!cb_accept_rules.isChecked()) {
+            cb_error.setVisibility(View.VISIBLE);
+        }
+        else {
+            validateUsername(username,fullName,email,password);
+        }
+    }
+
+    private void validateUsername(String username, String fullName, String email, String password) {
+        firebaseDatabase.child("Users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                userList.clear();
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    User user = dataSnapshot.getValue(User.class);
+
+                    if(user.getUsername() != null && user.getUsername().equals(username)) {
+                        userList.add(username);
+                    }
+                }
+                if(userList.size() >= 1) {
+                    et_username.setError(getString(R.string.used_username));
                     et_username.setFocusable(true);
                     et_username.setBackgroundResource(R.drawable.error_edit_text);
-                }
-                else if(TextUtils.isEmpty(fullName)) {
-                    et_fullName.setError(getString(R.string.required_filed));
-                    et_fullName.setFocusable(true);
-                    et_fullName.setBackgroundResource(R.drawable.error_edit_text);
-                }
-                else if (TextUtils.isEmpty(email)) {
-                    et_email.setError(getString(R.string.required_filed));
-                    et_email.setFocusable(true);
-                    et_email.setBackgroundResource(R.drawable.error_edit_text);
-                }
-                else if (TextUtils.isEmpty(password)) {
-                    et_password.setError(getString(R.string.required_filed));
-                    et_password.setFocusable(true);
-                    et_password.setBackgroundResource(R.drawable.error_edit_text);
-                }
-                else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    et_email.setError(getString(R.string.invalid_email));
-                    et_email.setFocusable(true);
-                    et_email.setBackgroundResource(R.drawable.error_edit_text);
-                }
-                else if(et_password.length() < 8) {
-                    inputLayout.setPasswordVisibilityToggleEnabled(false);
-                    et_password.setError(getString(R.string.password_length));
-                    et_password.setFocusable(true);
-                    et_password.setBackgroundResource(R.drawable.error_edit_text);
-
-                    et_password.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            inputLayout.setPasswordVisibilityToggleEnabled(true);
-                            et_password.setError(null);
-                        }
-                    });
-                }
-                else if (!cb_accept_rules.isChecked()) {
-                    cb_error.setVisibility(View.VISIBLE);
                 }
                 else {
                     registerUser(username,fullName,email,password);
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-
     }
 
     // To register a new user

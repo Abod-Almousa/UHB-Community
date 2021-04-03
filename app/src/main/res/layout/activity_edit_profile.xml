@@ -110,6 +110,7 @@
                 android:padding="12dp"
                 android:textColor="@color/black"
                 android:textSize="14sp"
+                android:maxLength="20"
                 android:lineSpacingExtra="6dp"/>
 
             <TextView

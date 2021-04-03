@@ -57,7 +57,6 @@ public class ResetPassActivity extends AppCompatActivity {
         tv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 finish();
             }
         });
@@ -104,6 +103,7 @@ public class ResetPassActivity extends AppCompatActivity {
                         @Override
                         public void onClick(final DialogInterface dialog, int which) {
 
+                            FirebaseAuth.getInstance().signOut();
                             Intent intent = new Intent(ResetPassActivity.this,LoginActivity.class);
                             startActivity(intent);
                             finish();

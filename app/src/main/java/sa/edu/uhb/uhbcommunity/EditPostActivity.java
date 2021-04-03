@@ -32,14 +32,17 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
+import com.rengwuxian.materialedittext.MaterialEditText;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.angmarch.views.NiceSpinner;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 
 import sa.edu.uhb.uhbcommunity.Model.Post;
 
@@ -47,7 +50,7 @@ public class EditPostActivity extends AppCompatActivity {
 
     private TextView btn_cancel;
     private Button btn_apply_changes;
-    private EditText et_post_description;
+    private MaterialEditText et_post_description;
     private ImageView iv_post_image;
     private ImageView btn_select_image, btn_remove_image;
     private NiceSpinner list_category;
@@ -107,8 +110,6 @@ public class EditPostActivity extends AppCompatActivity {
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EditPostActivity.this,MainActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
@@ -207,7 +208,17 @@ public class EditPostActivity extends AppCompatActivity {
                     date = getCurrentDate();
 
                     // Get the selected category
-                    category = list_category.getSelectedItem().toString();
+                    //category = list_category.getSelectedItem().toString();
+                    String tempCategory = list_category.getSelectedItem().toString();
+                    if(tempCategory.equals("Questions") || tempCategory.equals("الأسئلة")) {
+                        category = "Questions";
+                    }
+                    else if(tempCategory.equals("Advices") || tempCategory.equals("النصائح")) {
+                        category = "Advices";
+                    }
+                    else if(tempCategory.equals("News") || tempCategory.equals("الأخبار")) {
+                        category = "News";
+                    }
 
                     // To update the post to the database
                     HashMap<String,Object> map = new HashMap<>();
@@ -256,7 +267,17 @@ public class EditPostActivity extends AppCompatActivity {
             date = getCurrentDate();
 
             // Get the selected category
-            category = list_category.getSelectedItem().toString();
+            //category = list_category.getSelectedItem().toString();
+            String tempCategory = list_category.getSelectedItem().toString();
+            if(tempCategory.equals("Questions") || tempCategory.equals("الأسئلة")) {
+                category = "Questions";
+            }
+            else if(tempCategory.equals("Advices") || tempCategory.equals("النصائح")) {
+                category = "Advices";
+            }
+            else if(tempCategory.equals("News") || tempCategory.equals("الأخبار")) {
+                category = "News";
+            }
 
             // To upload the post to the database
             HashMap<String,Object> map = new HashMap<>();
@@ -288,8 +309,8 @@ public class EditPostActivity extends AppCompatActivity {
     // TO get the current date of the post
     private String getCurrentDate() {
 
-        Calendar calendar = Calendar.getInstance();
-        String date = DateFormat.getDateInstance().format(calendar.getTime());
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH);
+        String date = dateFormat.format(Calendar.getInstance().getTime());
 
         return date;
     }
@@ -308,9 +329,6 @@ public class EditPostActivity extends AppCompatActivity {
         }
         else {
             Toast.makeText(this, getString(R.string.try_again), Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(EditPostActivity.this,MainActivity.class);
-            startActivity(intent);
-            finish();
         }
     }
 }

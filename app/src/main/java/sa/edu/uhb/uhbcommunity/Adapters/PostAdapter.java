@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,6 +41,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import sa.edu.uhb.uhbcommunity.CommentActivity;
 import sa.edu.uhb.uhbcommunity.EditPostActivity;
 import sa.edu.uhb.uhbcommunity.Fragments.ProfileFragment;
+import sa.edu.uhb.uhbcommunity.LikeActivity;
 import sa.edu.uhb.uhbcommunity.MainActivity;
 import sa.edu.uhb.uhbcommunity.Model.Post;
 import sa.edu.uhb.uhbcommunity.Model.User;
@@ -206,6 +208,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             }
         });
 
+        holder.tv_no_of_likes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, LikeActivity.class);
+
+                // This data will be sent to the like activity to view the users who liked this post
+                intent.putExtra("postId",post.getPostid());
+                context.startActivity(intent);
+            }
+        });
+
         // When the user click on profile image to open this user profile
         holder.iv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -266,8 +279,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                                     public void onShow(DialogInterface dialogInterface) {
                                         dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(view.getResources().getColor(R.color.gray));
                                         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(view.getResources().getColor(R.color.red));
-                                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setAllCaps(false);
-                                        dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setAllCaps(false);
                                     }
                                 });
                                 dialog.show();
@@ -380,6 +391,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
                 if(snapshot.child(publisher).exists()) {
                     iv_verified.setVisibility(View.VISIBLE);
+                }
+                else {
+                    iv_verified.setVisibility(View.INVISIBLE);
                 }
             }
 

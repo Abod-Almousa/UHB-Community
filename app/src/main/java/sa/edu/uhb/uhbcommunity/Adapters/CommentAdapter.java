@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,6 +43,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
     private FirebaseUser firebaseUser;
     private DatabaseReference firebaseDatabase;
+
+    private String currentUser;
 
     public CommentAdapter(Context context, List<Comment> comments, String postId) {
         this.context = context;
@@ -105,12 +109,27 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             }
         });
 
-        // When the user long click on the comment to delete it
+        firebaseDatabase.child("Users").child(firebaseUser.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+
+                currentUser = user.getRole();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        // When the user(publisher) or admin/moderator long click on the comment to delete it
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
 
-                if(comment.getPublisher().equals(firebaseUser.getUid())) {
+                if(comment.getPublisher().equals(firebaseUser.getUid())
+                    || !currentUser.equals("user")) {
                     AlertDialog dialog = new AlertDialog.Builder(context).create();
                     dialog.setTitle(view.getResources().getString(R.string.delete_comment));
 
@@ -136,8 +155,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
                         public void onShow(DialogInterface dialogInterface) {
                             dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(view.getResources().getColor(R.color.gray));
                             dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(view.getResources().getColor(R.color.red));
-                            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setAllCaps(false);
-                            dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setAllCaps(false);
                         }
                     });
                     dialog.show();
@@ -155,6 +172,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
                 context.startActivity(intent);
             }
         });
+
+        checkVerifiedAccount(comment.getPublisher(),holder.iv_verified);
     }
 
     @Override
@@ -173,6 +192,28 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         });
     }
 
+    // To check if the account is verified by the admin or not, to set the blue star
+    private void checkVerifiedAccount(String id, ImageView iv_verified) {
+
+        firebaseDatabase.child("Verified").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.child(id).exists()) {
+                    iv_verified.setVisibility(View.VISIBLE);
+                }
+                else {
+                    iv_verified.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public CircleImageView iv_profile;
@@ -181,6 +222,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         public TextView tv_date;
         public TextView tv_time;
         public TextView tv_comment;
+        public ImageView iv_verified;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -191,6 +233,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             tv_date = itemView.findViewById(R.id.tv_date);
             tv_time = itemView.findViewById(R.id.tv_time);
             tv_comment = itemView.findViewById(R.id.tv_comment);
+            iv_verified = itemView.findViewById(R.id.iv_verified);
         }
     }
 }

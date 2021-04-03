@@ -39,6 +39,7 @@
     <string name="please_verify">يرجى التحقق من بريدك الإلكتروني!</string>
     <string name="incorrect_pass">كلمة المرور غير صحيحة</string>
     <string name="banned_account">تم حظر حسابك من قبل أحد المسؤولين</string>
+    <string name="used_username">اسم المستخدم هذا تم استخدامه</string>
     <string name="dialog_ok">حسنا</string>
     <string name="please_wait">إنتظر قليلا</string>
 
@@ -63,7 +64,7 @@
     <string name="category_error">يجب عليك تحديد فئة</string>
     <string name="category_hints">إرشادات لتحديد الفئة</string>
     <string name="hint1">1- الأسئلة: إذا أردت طرح سؤال أو لديك مشكلة.</string>
-    <string name="hint2">2- نصيحة: إذا كانت لديك نصيحة تعتقد أنها ستكون مفيدة للآخرين.</string>
+    <string name="hint2">2- النصائح: إذا كانت لديك نصيحة تعتقد أنها ستكون مفيدة للآخرين.</string>
     <string name="hint3">3- الأخبار: إذا كان لديك أخبار متعلقة بالجامعة.</string>
     <string-array name="categories">
         <item>إختر فئة</item>
@@ -81,6 +82,7 @@
     <string name="comments">تعليق</string>
     <string name="edit_post">تعديل المنشور</string>
     <string name="delete_post">حذف المنشور</string>
+    <string name="like_title">الإعجابات</string>
 
     <!-- For the comment -->
     <string name="comment_activity_title">التعليقات</string>
@@ -91,7 +93,7 @@
     <string name="delete_comment_cancel">إلغاء</string>
 
     <!-- For the post -->
-    <string name="delete_post_dialog">هل تريد حذف هذا المنشور؟</string>
+    <string name="delete_post_dialog">هل أنت متأكد من حذف هذا المنشور؟</string>
     <string name="delete_post_yes">حذف</string>
     <string name="delete_post_cancel">إلغاء</string>
 
@@ -107,7 +109,7 @@
 
     <!-- For the send email -->
     <string name="send_email_title">إرسال رسالة</string>
-    <string name="send_email_btn">إرسال الرسالة</string>
+    <string name="send_email_btn">إرسال</string>
     <string name="email_label">الرسالة</string>
     <string name="email_hint_to">إلى:</string>
     <string name="email_hint_subject">الموضوع:</string>
@@ -133,7 +135,7 @@
 
     <string name="links">روابط مهمة</string>
     <string name="contact">تواصل معنا</string>
-    <string name="about">من نحن</string>
+    <string name="about">حول التطبيق</string>
     <string name="panel">لوحة التحكم</string>
     <string name="settings">الإعدادات</string>
     <string name="logout">تسجيل الخروج</string>
@@ -174,6 +176,28 @@
     <string name="toast_verified">تم توثيق الحساب</string>
     <string name="toast_add_moderator">تم تعيين هذا المستخدم كمشرف</string>
     <string name="toast_delete_moderator">تم حذف هذا المشرف</string>
+    <string name="verify_account_">توثيق الحساب</string>
+    <string name="add_moderator_">إضافة مشرف</string>
+    <string name="delete_moderator_">حذف المشرف</string>
+    <string name="verify_dialog">هل أنت متأكد من توثيق هذا الحساب؟</string>
+    <string name="verify_yes">توثيق</string>
+    <string name="verify_cancel">إلغاء</string>
 
+    <!-- For the terms of use -->
+    <string name="rules_title">شروط الإستخدام</string>
+    <string name="rules_1">1- يمنع التكلم في السياسة والدين</string>
+    <string name="rules_2">2- تمنع الإساءة لأي عضو</string>
+    <string name="rules_3">3- عدم استخدام التطبيق في انشطة غير مشروعة او غير قانونية في المملكة العربية السعودية</string>
+    <string name="rules_4">4- يمنع نشر صور مخلة للآداب أو مخالفة للعادات والذوق العام (ينطبق ايضا على صورة الملف الشخصي)</string>
+    <string name="rules_5">5- يمنع نشر محتوى ليس له علاقة بمحتوى التطبيق (إعلان، بيع وشراء، الخ)</string>
+    <string name="rules_6">6- عدم نشر الاشاعات والاكاذيب</string>
+    <string name="rules_7">7- عدم تقديم او تحميل ملفات تحتوي برمجيات ضارة او فايروسات او ملفات تالفة</string>
+    <string name="rules_8">8- عدم محاولة الوصول الى بيانات او معلومات بطريقة غير مشروعة</string>
+    <string name="rules_9">9- عدم محاولة اعتراض تشغيل البرنامج</string>
+    <string name="rules_10">10- أي مخالفة قد تعرض العضو للحظر و/أو حذف المنشور</string>
+    <string name="rules_11">11- في حال الاختراقات يسلم الامر للجهات المختصة</string>
+    <string name="rules_12">12- لاختصار الوقت وتفادي التكرار قبل نشر منشور جديد ابحث عن الشيء الذي تريد</string>
+    <string name="rules_13">13- انشر تحت التصنيف الصحيح للمنشور</string>
+    <string name="rules_14">14- بالموافقة على هذي الاحكام توافق كذلك على السماح بالوصول الى بريدك الالكتروني المسجل به</string>
 
 </resources>

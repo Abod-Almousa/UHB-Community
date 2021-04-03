@@ -27,7 +27,7 @@
     <string name="failed_to_send">Failed to send the email message to your email address</string>
 
     <!-- Edit text errors  -->
-    <string name="required_filed">Required filed!</string>
+    <string name="required_filed">Required field!</string>
     <string name="invalid_email">Invalid email format!</string>
     <string name="password_length">Password length must be at least 8 characters</string>
     <string name="must_accept_rules">You must accept the rules and terms of use</string>
@@ -37,6 +37,7 @@
     <string name="please_verify">Please verify your Email !</string>
     <string name="incorrect_pass">The password is not correct</string>
     <string name="banned_account">Your account has been banned by an administrator</string>
+    <string name="used_username">This username is already in use</string>
     <string name="dialog_ok">Ok</string>
     <string name="please_wait">Please wait</string>
 
@@ -79,6 +80,7 @@
     <string name="comments">Comment</string>
     <string name="edit_post">Edit post</string>
     <string name="delete_post">Delete post</string>
+    <string name="like_title">Likes</string>
 
     <!-- For the comment -->
     <string name="comment_activity_title">Comments</string>
@@ -89,7 +91,7 @@
     <string name="delete_comment_cancel">Cancel</string>
 
     <!-- For the post -->
-    <string name="delete_post_dialog">Do you want to delete this post?</string>
+    <string name="delete_post_dialog">Are you sure you want to delete this post?</string>
     <string name="delete_post_yes">Delete</string>
     <string name="delete_post_cancel">Cancel</string>
 
@@ -105,7 +107,7 @@
 
     <!-- For the send email -->
     <string name="send_email_title">Send Email</string>
-    <string name="send_email_btn">Send Email</string>
+    <string name="send_email_btn">Send</string>
     <string name="email_label">Email</string>
     <string name="email_hint_to">To:</string>
     <string name="email_hint_subject">Subject:</string>
@@ -175,5 +177,28 @@
     <string name="toast_verified">Account has been verified</string>
     <string name="toast_add_moderator">This user has been set as a moderator</string>
     <string name="toast_delete_moderator">This moderator has been removed</string>
+    <string name="verify_account_">Verify Account</string>
+    <string name="add_moderator_">Add Moderator</string>
+    <string name="delete_moderator_">Delete Moderator</string>
+    <string name="verify_dialog">Are you sure you want to verify this account?</string>
+    <string name="verify_yes">Verify</string>
+    <string name="verify_cancel">Cancel</string>
+
+    <!-- For the terms of use -->
+    <string name="rules_title">Terms of use</string>
+    <string name="rules_1">1- Discussing about politics or religion is prohibited.</string>
+    <string name="rules_2">2- Mistreating any member is prohibited.</string>
+    <string name="rules_3">3- Using the application in illegal activities according to the Saudi law is prohibited.</string>
+    <string name="rules_4">4- Publishing pictures that are immoral or contrary to customs and public decency is prohibited.</string>
+    <string name="rules_5">5- Publishing content that is not related to the application like advertising/selling is prohibited.</string>
+    <string name="rules_6">6- Spreading lies and rumors is prohibited.</string>
+    <string name="rules_7">7- Uploading an infected files or malwares/viruses is prohibited.</string>
+    <string name="rules_8">8- Trying to reach private data or information in an illegal way is prohibited.</string>
+    <string name="rules_9">9- Trying to Dos the application is prohibited.</string>
+    <string name="rules_10">10- Any prohibited act may result in banning the user and/or deleting the post.</string>
+    <string name="rules_11">11- If hacking is involved the problem may reach to the higher authorities.</string>
+    <string name="rules_12">12- To save time search about your problem before posting about it.</string>
+    <string name="rules_13">13- Post under the right categorization.</string>
+    <string name="rules_14">14- Accepting terms of use indicate that you allow the sharing of you registered email address.</string>
 
 </resources>

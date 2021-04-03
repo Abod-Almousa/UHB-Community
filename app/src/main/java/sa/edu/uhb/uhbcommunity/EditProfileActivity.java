@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -99,8 +100,13 @@ public class EditProfileActivity extends AppCompatActivity {
         btn_apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateProfile();
-                finish();
+                if(TextUtils.isEmpty(et_name.getText().toString())) {
+                    et_name.setError(getString(R.string.required_filed));
+                }
+                else {
+                    updateProfile();
+                    finish();
+                }
             }
         });
     }

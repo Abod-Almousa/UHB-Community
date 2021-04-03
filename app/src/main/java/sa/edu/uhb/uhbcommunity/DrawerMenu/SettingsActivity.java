@@ -4,24 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.Locale;
 
-import sa.edu.uhb.uhbcommunity.LoginActivity;
 import sa.edu.uhb.uhbcommunity.MainActivity;
 import sa.edu.uhb.uhbcommunity.R;
 import sa.edu.uhb.uhbcommunity.ResetPassActivity;
+import sa.edu.uhb.uhbcommunity.RulesActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -36,6 +35,11 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getLocale();
         setContentView(R.layout.activity_settings);
+
+        if(FirebaseAuth.getInstance().getCurrentUser() == null)
+        {
+            finish();
+        }
 
         // For the toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -64,6 +68,14 @@ public class SettingsActivity extends AppCompatActivity {
         }
         else if (selectedLanguage.equals("ar")) {
             rb_arabic.setChecked(true);
+        }
+        else {
+            if(Locale.getDefault().getLanguage() == "en") {
+                rb_english.setChecked(true);
+            }
+            else {
+                rb_arabic.setChecked(true);
+            }
         }
 
         // When the user select the language
@@ -95,6 +107,16 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SettingsActivity.this, ResetPassActivity.class);
+                startActivity(intent);
+                //finish();
+            }
+        });
+
+        // When click on terms of use button, he will be redirected to the rules page
+        terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SettingsActivity.this, RulesActivity.class);
                 startActivity(intent);
             }
         });

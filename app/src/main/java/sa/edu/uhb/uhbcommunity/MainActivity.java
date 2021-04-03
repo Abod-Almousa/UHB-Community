@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import java.util.Locale;
@@ -29,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getLocale();
         setContentView(R.layout.activity_main);
+
+        if(FirebaseAuth.getInstance().getCurrentUser() == null)
+        {
+            finish();
+        }
 
         /* if( getIntent().getBooleanExtra("Exit me", false)){
             finish();
@@ -60,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         selectorFragment = null;
                         Intent intent = new Intent(MainActivity.this,AddPostActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
 
                     case R.id.nav_notification:
@@ -109,7 +116,12 @@ public class MainActivity extends AppCompatActivity {
     public void getLocale() {
         SharedPreferences preferences = getSharedPreferences("Language", Activity.MODE_PRIVATE);
         String language = preferences.getString("language","");
-        setLocale(language);
+        if(language.equals("en") || language.equals("ar")) {
+            setLocale(language);
+        }
+        else {
+            setLocale(Locale.getDefault().getLanguage());
+        }
     }
 
     @Override

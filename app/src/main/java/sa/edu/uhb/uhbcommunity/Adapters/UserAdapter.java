@@ -1,6 +1,7 @@
 package sa.edu.uhb.uhbcommunity.Adapters;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -12,9 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -148,7 +152,34 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
 
                         switch (menuItem.getItemId()) {
                             case R.id.verify_account:
-                                verifyAccount(user.getId());
+                                AlertDialog dialog = new AlertDialog.Builder(context).create();
+                                dialog.setTitle(view.getResources().getString(R.string.verify_dialog));
+
+                                // Button "Yes" to delete the post
+                                dialog.setButton(AlertDialog.BUTTON_POSITIVE, view.getResources().getString(R.string.verify_yes), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        verifyAccount(user.getId(),dialogInterface);
+                                    }
+                                });
+
+                                // Button "Cancel" to cancel the alert
+                                dialog.setButton(AlertDialog.BUTTON_NEUTRAL, view.getResources().getString(R.string.verify_cancel), new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.dismiss();
+                                    }
+                                });
+
+                                // To set the color of the dialog buttons
+                                dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                                    @Override
+                                    public void onShow(DialogInterface dialogInterface) {
+                                        dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(view.getResources().getColor(R.color.gray));
+                                        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(view.getResources().getColor(R.color.teal_200));
+                                    }
+                                });
+                                dialog.show();
                                 break;
 
                             case R.id.add_moderator:
@@ -199,9 +230,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
     }
 
     // To verify the user account
-    private void verifyAccount(String id) {
-        firebaseDatabase.child("Verified").child(id).setValue(true);
-        Toast.makeText(context, context.getResources().getString(R.string.toast_verified), Toast.LENGTH_SHORT).show();
+    private void verifyAccount(String id, DialogInterface dialogInterface) {
+        firebaseDatabase.child("Verified").child(id).setValue(true).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                dialogInterface.dismiss();
+                Toast.makeText(context, context.getResources().getString(R.string.toast_verified), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     // To make this user as a moderator

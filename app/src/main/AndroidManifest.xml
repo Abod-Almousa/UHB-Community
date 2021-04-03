@@ -12,29 +12,65 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UHBCommunity">
-        <activity android:name=".DrawerMenu.SettingsActivity" />
-        <activity android:name=".DrawerMenu.AboutUsActivity" />
-        <activity android:name=".DrawerMenu.ContactActivity" />
-        <activity android:name=".DrawerMenu.LinksActivity" />
-        <activity android:name=".ViewNotifiedPostActivity" />
-        <activity android:name=".SendEmailActivity" />
-        <activity android:name=".EditProfileActivity" />
-        <activity android:name=".EditPostActivity" />
-        <activity android:name=".CommentActivity" />
-        <activity android:name=".AddPostActivity" />
-        <activity android:name=".ResetPassActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".StartActivity">
+        <activity android:name=".RulesActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".LikeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DrawerMenu.SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DrawerMenu.AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DrawerMenu.ContactActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DrawerMenu.LinksActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ViewNotifiedPostActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SendEmailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditPostActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CommentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddPostActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ResetPassActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".StartActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Base.Theme.AppCompat" />
     </application>
 

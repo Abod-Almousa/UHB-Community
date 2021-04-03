@@ -1,6 +1,10 @@
 package sa.edu.uhb.uhbcommunity.Fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -33,12 +37,15 @@ import org.angmarch.views.OnSpinnerItemSelectedListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import sa.edu.uhb.uhbcommunity.Adapters.PostAdapter;
 import sa.edu.uhb.uhbcommunity.DrawerMenu.AboutUsActivity;
 import sa.edu.uhb.uhbcommunity.DrawerMenu.ContactActivity;
 import sa.edu.uhb.uhbcommunity.DrawerMenu.LinksActivity;
 import sa.edu.uhb.uhbcommunity.DrawerMenu.SettingsActivity;
+import sa.edu.uhb.uhbcommunity.LoginActivity;
+import sa.edu.uhb.uhbcommunity.MainActivity;
 import sa.edu.uhb.uhbcommunity.Model.Post;
 import sa.edu.uhb.uhbcommunity.R;
 import sa.edu.uhb.uhbcommunity.StartActivity;
@@ -105,6 +112,7 @@ public class HomeFragment extends Fragment {
                     case R.id.settings:
                         Intent settings = new Intent(getContext(), SettingsActivity.class);
                         startActivity(settings);
+                        getActivity().finish();
                         break;
 
                     case R.id.logout:

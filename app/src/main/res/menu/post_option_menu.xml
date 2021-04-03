@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/edit_post"
-        android:title="@string/edit_post"
-        android:icon="@drawable/ic_edit_post" />
-
-    <item
         android:id="@+id/delete_post"
         android:title="@string/delete_post"
         android:icon="@drawable/ic_delete_post" />
+
+    <item
+        android:id="@+id/edit_post"
+        android:title="@string/edit_post"
+        android:icon="@drawable/ic_edit_post" />
 
 </menu>
