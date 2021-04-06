@@ -116,7 +116,7 @@ public class ProfileFragment extends Fragment {
         rv_posts.setHasFixedSize(true);
         rv_posts.setLayoutManager(new LinearLayoutManager(getContext()));
         postList = new ArrayList<>();
-        postAdapter = new PostAdapter(getContext(),postList);
+        postAdapter = new PostAdapter(getContext(),postList,true);
         rv_posts.setAdapter(postAdapter);
 
         // For saved list
@@ -125,7 +125,7 @@ public class ProfileFragment extends Fragment {
         rv_saved.setHasFixedSize(true);
         rv_saved.setLayoutManager(new LinearLayoutManager(getContext()));
         savedList = new ArrayList<>();
-        savedAdapter = new PostAdapter(getContext(),savedList);
+        savedAdapter = new PostAdapter(getContext(),savedList,true);
         rv_saved.setAdapter(savedAdapter);
 
         /* **************************************************************************** */

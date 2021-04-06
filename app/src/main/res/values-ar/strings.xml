@@ -127,6 +127,7 @@
     <string name="notification_like">أعجب بمنشورك</string>
     <string name="notification_comment">قام بالرد على منشورك</string>
     <string name="view_post_title">المنشور</string>
+    <string name="view_deleted_post">تم حذف هذا المنشور</string>
 
     <!-- For the drawer menu -->
     <string name="uhb">جامعة حفرالباطن</string>

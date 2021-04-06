@@ -125,6 +125,7 @@
     <string name="notification_like">Liked your post</string>
     <string name="notification_comment">Replied to your post</string>
     <string name="view_post_title">Post</string>
+    <string name="view_deleted_post">This post has been deleted</string>
 
     <!-- For the drawer menu -->
     <string name="open">Open navigation drawer</string>

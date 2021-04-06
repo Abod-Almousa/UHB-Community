@@ -131,7 +131,7 @@ public class HomeFragment extends Fragment {
         postList = new ArrayList<>();
 
         // Using the post adapter
-        postAdapter = new PostAdapter(getContext(),postList);
+        postAdapter = new PostAdapter(getContext(),postList,true);
 
         // For the lottie animation
         anim_page_loading = view.findViewById(R.id.anim_page_loading);

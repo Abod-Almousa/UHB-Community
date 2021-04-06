@@ -52,13 +52,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
     private Context context;
     private List<Post> posts;
+    private Boolean isFragment;
 
     private FirebaseUser firebaseUser;
     private DatabaseReference firebaseDatabase;
 
-    public PostAdapter(Context context, List<Post> posts) {
+    public PostAdapter(Context context, List<Post> posts, Boolean isFragment) {
         this.context = context;
         this.posts = posts;
+        this.isFragment = isFragment;
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
     }
@@ -223,13 +225,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         holder.iv_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity.bottomNavigation.setItemSelected(R.id.nav_profile,true);
 
-                context.getSharedPreferences("PROFILE",Context.MODE_PRIVATE).edit()
-                        .putString("userId",post.getPublisher()).commit();
+                // The user comes from fragment
+                if(isFragment) {
+                    MainActivity.bottomNavigation.setItemSelected(R.id.nav_profile,true);
 
-                ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new ProfileFragment()).commit();
+                    context.getSharedPreferences("PROFILE",Context.MODE_PRIVATE).edit()
+                            .putString("userId",post.getPublisher()).commit();
+
+                    ((FragmentActivity)context).getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, new ProfileFragment()).commit();
+                }
+                // The user comes from activity
+                else {
+                    Intent intent = new Intent(context, MainActivity.class);
+                    intent.putExtra("userId",post.getPublisher());
+                    context.startActivity(intent);
+                }
             }
         });
 

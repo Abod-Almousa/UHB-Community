@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,6 +31,7 @@ public class ViewNotifiedPostActivity extends AppCompatActivity {
     private RecyclerView rv_posts;
 
     private String postId;
+    private LottieAnimationView anim_deleted_post;
 
     private DatabaseReference firebaseDatabase;
 
@@ -55,11 +58,13 @@ public class ViewNotifiedPostActivity extends AppCompatActivity {
             }
         });
 
+        anim_deleted_post = findViewById(R.id.anim_deleted_post);
+
         rv_posts = findViewById(R.id.rv_posts);
         rv_posts.setHasFixedSize(true);
         rv_posts.setLayoutManager(new LinearLayoutManager(this));
         postList = new ArrayList<>();
-        postAdapter = new PostAdapter(this,postList);
+        postAdapter = new PostAdapter(this,postList,false);
         rv_posts.setAdapter(postAdapter);
 
         //To view the notified post
@@ -68,10 +73,19 @@ public class ViewNotifiedPostActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 postList.clear();
 
-                Post post = snapshot.getValue(Post.class);
-                postList.add(post);
+                // To check first if the post is still exist or not
+                if (!snapshot.hasChildren()) {
+                    anim_deleted_post.setVisibility(View.VISIBLE);
+                    anim_deleted_post.playAnimation();
+                    Toast.makeText(ViewNotifiedPostActivity.this, getString(R.string.view_deleted_post) , Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Post post = snapshot.getValue(Post.class);
+                    postList.add(post);
 
-                postAdapter.notifyDataSetChanged();
+                    postAdapter.notifyDataSetChanged();
+                }
+
             }
 
             @Override

@@ -96,7 +96,7 @@ public class SearchFragment extends Fragment {
         rv_posts.setHasFixedSize(true);
         rv_posts.setLayoutManager(new LinearLayoutManager(getContext()));
         postList = new ArrayList<>();
-        postAdapter = new PostAdapter(getContext(),postList);
+        postAdapter = new PostAdapter(getContext(),postList,true);
         rv_posts.setAdapter(postAdapter);
 
         // Default visibility is (User)

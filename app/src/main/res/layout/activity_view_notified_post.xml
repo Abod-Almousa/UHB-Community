@@ -27,4 +27,14 @@
         android:id="@+id/rv_posts"
         android:layout_below="@+id/appbar"/>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/anim_deleted_post"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/deleted_post"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="false"/>
+
 </RelativeLayout>
