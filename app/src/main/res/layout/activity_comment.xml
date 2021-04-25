@@ -44,7 +44,7 @@
             android:id="@+id/iv_profile"
             android:layout_margin="8dp"/>
 
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/et_add_comment"
@@ -55,7 +55,9 @@
             android:layout_marginEnd="10dp"
             android:layout_centerVertical="true"
             android:background="@android:color/transparent"
-            android:maxLength="200"/>
+            android:maxLength="200"
+            app:met_hideUnderline="true"
+            app:met_maxCharacters="200"/>
 
         <ImageView
             android:id="@+id/iv_send_comment"

@@ -75,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
 
+        et_username.setError(getString(R.string.username_domain));
         // when the edit text is focused / unfocused
         et_username.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -84,6 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 else {
                     v.setBackgroundResource(R.drawable.unfocused_edit_text);
+                    et_username.setError(null);
                 }
             }
         });

@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.rengwuxian.materialedittext.MaterialEditText;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
@@ -42,7 +43,7 @@ import sa.edu.uhb.uhbcommunity.Model.User;
 public class CommentActivity extends AppCompatActivity {
 
     private CircleImageView iv_profile;
-    private EditText et_add_comment;
+    private MaterialEditText et_add_comment;
     private ImageView iv_send_comment;
     private String date;
     private String time;
